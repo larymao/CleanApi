@@ -32,7 +32,7 @@ public class CustomWebApplicationFactory(DbConnection connection) : WebApplicati
                 .AddDbContext<ApplicationDbContext>((sp, options) =>
                 {
                     options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-                    options.UseSqlServer(_connection);
+                    options.UseNpgsql(_connection);
                 });
         });
     }

@@ -10,13 +10,10 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebServices();
 
 var app = builder.Build();
+await app.InitialiseDatabaseAsync();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    await app.InitialiseDatabaseAsync();
-}
-else
+if (!app.Environment.IsDevelopment())
 {
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
@@ -35,10 +32,6 @@ app.UseSwaggerUi(settings =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
-
-app.MapRazorPages();
-
-app.MapFallbackToFile("index.html");
 
 app.UseExceptionHandler(options => { });
 

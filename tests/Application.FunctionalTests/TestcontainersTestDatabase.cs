@@ -1,9 +1,9 @@
-using System.Data.Common;
 using CleanApi.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Respawn;
-using Testcontainers.MsSql;
+using System.Data.Common;
+using Testcontainers.PostgreSql;
 
 namespace CleanApi.Application.FunctionalTests;
 
@@ -11,14 +11,14 @@ namespace CleanApi.Application.FunctionalTests;
 public class TestcontainersTestDatabase : ITestDatabase
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
 {
-    private readonly MsSqlContainer _container;
+    private readonly PostgreSqlContainer _container;
     private DbConnection _connection = null!;
     private string _connectionString = null!;
     private Respawner _respawner = null!;
 
     public TestcontainersTestDatabase()
     {
-        _container = new MsSqlBuilder()
+        _container = new PostgreSqlBuilder()
             .WithAutoRemove(true)
             .Build();
     }
@@ -32,7 +32,7 @@ public class TestcontainersTestDatabase : ITestDatabase
         _connection = new SqlConnection(_connectionString);
 
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseSqlServer(_connectionString)
+            .UseNpgsql(_connectionString)
             .Options;
 
         var context = new ApplicationDbContext(options);

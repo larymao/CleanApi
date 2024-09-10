@@ -8,14 +8,14 @@ using Respawn;
 namespace CleanApi.Application.FunctionalTests;
 
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
-public class SqlServerTestDatabase : ITestDatabase
+public class PostgresTestDatabase : ITestDatabase
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
 {
     private readonly string _connectionString = null!;
     private SqlConnection _connection = null!;
     private Respawner _respawner = null!;
 
-    public SqlServerTestDatabase()
+    public PostgresTestDatabase()
     {
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
@@ -34,7 +34,7 @@ public class SqlServerTestDatabase : ITestDatabase
         _connection = new SqlConnection(_connectionString);
 
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseSqlServer(_connectionString)
+            .UseNpgsql(_connectionString)
             .Options;
 
         var context = new ApplicationDbContext(options);

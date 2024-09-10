@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.Common.Interfaces;
+using CleanApi.Application.Common.Interfaces;
 using CleanApi.Domain.Constants;
 using CleanApi.Infrastructure.Data;
 using CleanApi.Infrastructure.Data.Interceptors;
@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace Microsoft.Extensions.DependencyInjection;
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 
 public static class DependencyInjection
 {
@@ -25,7 +27,7 @@ public static class DependencyInjection
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
 
-            options.UseSqlServer(connectionString);
+            options.UseNpgsql(connectionString);
         });
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
@@ -46,8 +48,8 @@ public static class DependencyInjection
         services.AddSingleton(TimeProvider.System);
         services.AddTransient<IIdentityService, IdentityService>();
 
-        services.AddAuthorization(options =>
-            options.AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator)));
+        services.AddAuthorizationBuilder()
+            .AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator));
 
         return services;
     }
