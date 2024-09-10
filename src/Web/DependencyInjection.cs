@@ -1,9 +1,7 @@
-using Azure.Identity;
 using CleanApi.Application.Common.Interfaces;
 using CleanApi.Infrastructure.Data;
 using CleanApi.Web.Services;
 using Microsoft.AspNetCore.Mvc;
-
 using NSwag;
 using NSwag.Generation.Processors.Security;
 
@@ -26,7 +24,7 @@ public static class DependencyInjection
 
         services.AddExceptionHandler<CustomExceptionHandler>();
 
-        services.AddRazorPages();
+        services.AddControllers();
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
@@ -49,19 +47,6 @@ public static class DependencyInjection
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
         });
-
-        return services;
-    }
-
-    public static IServiceCollection AddKeyVaultIfConfigured(this IServiceCollection services, ConfigurationManager configuration)
-    {
-        var keyVaultUri = configuration["AZURE_KEY_VAULT_ENDPOINT"];
-        if (!string.IsNullOrWhiteSpace(keyVaultUri))
-        {
-            configuration.AddAzureKeyVault(
-                new Uri(keyVaultUri),
-                new DefaultAzureCredential());
-        }
 
         return services;
     }

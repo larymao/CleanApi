@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+using CleanApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 namespace CleanApi.Web.Endpoints;
 
@@ -7,7 +7,6 @@ public class WeatherForecasts : EndpointGroupBase
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)
-            .RequireAuthorization()
             .MapGet(GetWeatherForecasts);
     }
 

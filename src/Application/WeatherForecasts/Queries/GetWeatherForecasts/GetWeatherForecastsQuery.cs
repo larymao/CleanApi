@@ -15,6 +15,9 @@ public class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecas
     {
         var rng = new Random();
 
+        if (rng.Next(10) < 5)
+            throw new Exception("not work");
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
