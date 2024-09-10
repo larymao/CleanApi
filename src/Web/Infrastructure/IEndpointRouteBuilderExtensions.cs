@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CleanApi.Web.Infrastructure;
 
@@ -40,6 +40,17 @@ public static class IEndpointRouteBuilderExtensions
 
         builder.MapDelete(pattern, handler)
             .WithName(handler.Method.Name);
+
+        return builder;
+    }
+
+    public static IEndpointRouteBuilder MapFilePost(this IEndpointRouteBuilder builder, Delegate handler, string pattern)
+    {
+        Guard.Against.AnonymousMethod(handler);
+
+        builder.MapPost(pattern, handler)
+            .WithName(handler.Method.Name)
+            .DisableAntiforgery();
 
         return builder;
     }
