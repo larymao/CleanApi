@@ -1,9 +1,9 @@
-using System.Data.Common;
 using CleanApi.Infrastructure.Data;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using Respawn;
+using System.Data.Common;
 
 namespace CleanApi.Application.FunctionalTests;
 
@@ -12,7 +12,7 @@ public class PostgresTestDatabase : ITestDatabase
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
 {
     private readonly string _connectionString = null!;
-    private SqlConnection _connection = null!;
+    private NpgsqlConnection _connection = null!;
     private Respawner _respawner = null!;
 
     public PostgresTestDatabase()
@@ -31,7 +31,7 @@ public class PostgresTestDatabase : ITestDatabase
 
     public async Task InitialiseAsync()
     {
-        _connection = new SqlConnection(_connectionString);
+        _connection = new NpgsqlConnection(_connectionString);
 
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseNpgsql(_connectionString)
@@ -41,8 +41,10 @@ public class PostgresTestDatabase : ITestDatabase
 
         context.Database.Migrate();
 
-        _respawner = await Respawner.CreateAsync(_connectionString, new RespawnerOptions
+        await _connection.OpenAsync();
+        _respawner = await Respawner.CreateAsync(_connection, new RespawnerOptions
         {
+            DbAdapter = DbAdapter.Postgres,
             TablesToIgnore = ["__EFMigrationsHistory"]
         });
     }
@@ -54,11 +56,12 @@ public class PostgresTestDatabase : ITestDatabase
 
     public async Task ResetAsync()
     {
-        await _respawner.ResetAsync(_connectionString);
+        await _respawner.ResetAsync(_connection);
     }
 
     public async Task DisposeAsync()
     {
-        await _connection.DisposeAsync();
+        if (_connection != null)
+            await _connection.DisposeAsync();
     }
 }

@@ -31,7 +31,6 @@
     <PackageReference Include="Serilog.Expressions" />
   </ItemGroup>
 
-
   <!-- Auto-generated Open API specification and Angular TypeScript clients -->
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>

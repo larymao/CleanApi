@@ -1,6 +1,6 @@
 using CleanApi.Infrastructure.Data;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using Respawn;
 using System.Data.Common;
 using Testcontainers.PostgreSql;
@@ -29,7 +29,7 @@ public class TestcontainersTestDatabase : ITestDatabase
 
         _connectionString = _container.GetConnectionString();
 
-        _connection = new SqlConnection(_connectionString);
+        _connection = new NpgsqlConnection(_connectionString);
 
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseNpgsql(_connectionString)
@@ -39,8 +39,10 @@ public class TestcontainersTestDatabase : ITestDatabase
 
         context.Database.Migrate();
 
-        _respawner = await Respawner.CreateAsync(_connectionString, new RespawnerOptions
+        await _connection.OpenAsync();
+        _respawner = await Respawner.CreateAsync(_connection, new RespawnerOptions
         {
+            DbAdapter = DbAdapter.Postgres,
             TablesToIgnore = ["__EFMigrationsHistory"]
         });
     }
@@ -52,12 +54,15 @@ public class TestcontainersTestDatabase : ITestDatabase
 
     public async Task ResetAsync()
     {
-        await _respawner.ResetAsync(_connectionString);
+        await _respawner.ResetAsync(_connection);
     }
 
     public async Task DisposeAsync()
     {
-        await _connection.DisposeAsync();
-        await _container.DisposeAsync();
+        if (_connection != null)
+            await _connection.DisposeAsync();
+
+        if (_container != null)
+            await _container.DisposeAsync();
     }
 }
