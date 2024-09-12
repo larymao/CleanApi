@@ -1,0 +1,51 @@
+name: cleanapi
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/Web/Dockerfile
+    container_name: cleanapi
+    restart: always
+    ports:
+      - "59527:8080"
+    volumes:
+      - cleanapi-logs:/app/logs/
+    networks:
+      - cleanapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20M"
+        max-file: "10"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - cleanapi
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=cleanapi
+      - POSTGRES_PASSWORD=cleanapi
+      - TZ=Asia/Shanghai
+      - PGTZ=Asia/Shanghai
+      - LANG=en_US.utf8
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20M"
+        max-file: "10"
+
+networks:
+  cleanapi:
+
+volumes:
+  cleanapi-logs:
+  postgres-data:
