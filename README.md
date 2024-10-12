@@ -1,58 +1,48 @@
-﻿# CleanApi
+# CleanApi
 
-The project was generated using the [Clean.Architecture.Solution.Template](https://github.com/jasontaylordev/CleanApi) version 8.0.6.
+This is a template for an API using a streamlined verison of [Clean Architecture](https://github.com/jasontaylordev/CleanArchitecture) alongside .NET's [Minimal APIs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis).
 
-## Build
+## Prerequisites
 
-Run `dotnet build -tl` to build the solution.
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) - *[required]* 
+This solution in built on it, you need to install it before building and running.
 
-## Run
+- [Docker](https://www.docker.com/products/docker-desktop) - *[optional]* 
+If you want to build the Dockerfile you will need to install it.
 
-To run the web application:
+- [Docker-Compose](https://docs.docker.com/compose/install) - *[optional]* 
+If you want to launch this solution quickly via the docker-compose.yml you will need to install it.
+
+## Installation
+
+This is a [.NET template](https://www.nuget.org/packages/CleanApi.Solution.Template) and you can install it using the [dotnet new cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new). To install the lastest version of the template run the following command.
+
+``` bash
+dotnet new install CleanApi.Solution.Template
+```
+
+To create a new solution using this template run the following command
 
 ```bash
-cd .\src\Web\
-dotnet watch run
+dotnet new cleanapi --name {YOUR_SOLUTION_NAMESPACE}
 ```
 
-Navigate to https://localhost:5001. The application will automatically reload if you change any of the source files.
-
-## Code Styles & Formatting
-
-The template includes [EditorConfig](https://editorconfig.org/) support to help maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs. The **.editorconfig** file defines the coding styles applicable to this solution.
-
-## Code Scaffolding
-
-The template includes support to scaffold new commands and queries.
-
-Start in the `.\src\Application\` folder.
-
-Create a new command:
-
-```
-dotnet new ca-usecase --name CreateTodoList --feature-name TodoLists --usecase-type command --return-type int
-```
-
-Create a new query:
-
-```
-dotnet new ca-usecase -n GetTodos -fn TodoLists -ut query -rt TodosVm
-```
-
-If you encounter the error *"No templates or subcommands found matching: 'ca-usecase'."*, install the template and try again:
+To learn more, run the following command:
 
 ```bash
-dotnet new install Clean.Architecture.Solution.Template::8.0.6
+dotnet new cleanapi --help
 ```
 
-## Test
+## Features
 
-The solution contains unit, integration, and functional tests.
+There are plenty of handy implementations of features throughout this solution, in no particular order here are some that might interest you.
 
-To run the tests:
-```bash
-dotnet test
-```
-
-## Help
-To learn more about the template go to the [project website](https://github.com/jasontaylordev/CleanArchitecture). Here you can find additional guidance, request new features, report a bug, and discuss the template with other users.
+- Authentication using [JWT Token](https://jwt.io/introduction)
+- Data Storage using [Postgres](https://github.com/postgres/postgres)
+- Data accessing using [EFCore](https://github.com/dotnet/efcore) with [Code First Mode](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations)
+- Object Mapping using [AutoMapper](https://github.com/AutoMapper/AutoMapper)
+- Mediator Pattern using [MediatR](https://github.com/jbogard/MediatR)
+- Validation using [FluentValidation](https://github.com/FluentValidation/FluentValidation)
+- OpenApi using [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
+- Logging using [Serilog](https://github.com/serilog/serilog)
+- Testing using [NUnit](https://github.com/nunit/nunit), [Fluent Assertions](https://github.com/fluentassertions/fluentassertions), [Moq](https://github.com/devlooped/moq) & [Respawn](https://github.com/jbogard/Respawn)
