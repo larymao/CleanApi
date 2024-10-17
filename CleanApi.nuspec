@@ -4,7 +4,7 @@
   <metadata>
 
     <id>CleanApi.Solution.Template</id>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <title>Clean Aapi Solution Template</title>
     <authors>Lary Mao</authors>
     <description>
@@ -17,6 +17,7 @@
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>clean-api clean-architechture minimal-api template csharp dotnet</tags>
+    <icon>icon.png</icon>
     <readme>README.md</readme>
 
     <packageTypes>
@@ -26,6 +27,7 @@
   </metadata>
 
   <files>
+    <file src=".template.config\icon.png" />
     <file src="README.md" />
     <file src="**" target="content\" exclude="**\bin\**;**\obj\**;**\logs\**;.vs\**;.vscode\**;.git\**;.github\**;**\*.filelist;**\*.user;**\*.lock.json;LICENSE;README.md;" />
   </files>
