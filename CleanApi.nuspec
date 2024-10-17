@@ -28,7 +28,7 @@
 
   <files>
     <file src="README.md" />
-    <file src="**" target="content\" exclude="**\bin\**;**\obj\**;**\logs\**;.vs\**;.vscode\**;.git\**;.github\**;**\*.filelist;**\*.user;**\*.lock.json;.\LICENSE;.\README.md;" />
+    <file src="**" target="content\" exclude="**\bin\**;**\obj\**;**\logs\**;.vs\**;.vscode\**;.git\**;.github\**;**\*.filelist;**\*.user;**\*.lock.json;LICENSE;README.md;" />
   </files>
 
 </package>
