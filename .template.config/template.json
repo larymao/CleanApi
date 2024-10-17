@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lary Mao",
+  "classifications": [
+    "Web",
+    "API",
+    "ASP.NET",
+    "Clean",
+    "Minimal"
+  ],
+  "identity": "CleanApi.Solution.Template",
+  "name": "CleanApi Solution",
+  "description": "A template for an API using a streamlined verison of Clean Architecture alongside .NET's Minimal APIs.",
+  "shortName": "cleanapi",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "CleanApi",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".template.config/**/*",
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        "**/[Ll]ogs/**",
+        "**/.vs/**",
+        "**/.vscode/**",
+        "**/.git/**",
+        "**/.github/**",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        "*.nuspec",
+        "LICENSE",
+        "README.md"
+      ],
+      "modifiers": [
+        {
+          "copyOnly": [
+            "**/Configs/*.json",
+            "docker-compose.yml"
+          ]
+        },
+        {
+          "condition": "(!git)",
+          "exclude": [
+            ".gitattributes",
+            ".gitignore"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "git": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Run 'git init' command and add .gitignore, .gitattributes file to the new solution."
+    }
+  },
+  "postActions": [
+    {
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "description": "Run git init.",
+      "condition": "git",
+      "continueOnError": false,
+      "manualInstructions": [
+        {
+          "text": "Run 'git init'"
+        }
+      ],
+      "args": {
+        "executable": "git",
+        "args": "init",
+        "redirectStandardOutput": true,
+        "redirectStandardError": true
+      }
+    }
+  ]
+}

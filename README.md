@@ -21,13 +21,23 @@ This is a [.NET template](https://www.nuget.org/packages/CleanApi.Solution.Templ
 dotnet new install CleanApi.Solution.Template
 ```
 
-To create a new solution using this template run the following command
+To create a new solution using this template run one of the following commands
 
 ```bash
-dotnet new cleanapi --name {YOUR_SOLUTION_NAMESPACE}
+# new solution with git initialized
+dotnet new cleanapi --allow-scripts yes --name {YOUR_SOLUTION_NAMESPACE}
+
+# new solution without git
+dotnet new cleanapi --git false --name {YOUR_SOLUTION_NAMESPACE}
 ```
 
-To learn more, run the following command:
+And then you could modify contents of `docker-compose.yml`, `src/Web/Dockerfile` and `src/Web/Configs/*.json` to suit your own business. Things you may wanna to modify are as follows:
+
+- *postgres configs in docker-compose.yml*
+- *postgres connection string in config files*
+- *dockerfile labels*
+
+To learn something more about creating new solution from this template, run the following command:
 
 ```bash
 dotnet new cleanapi --help
