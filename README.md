@@ -1,5 +1,9 @@
 # CleanApi
 
+[![Build](https://github.com/larymao/CleanApi/actions/workflows/build.yml/badge.svg)](https://github.com/larymao/CleanApi/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/larymao/CleanApi/graph/badge.svg?token=6EEWCTPJK3)](https://codecov.io/gh/larymao/CleanApi)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/larymao/cleanapi/blob/master/LICENSE)  
+
 This is a template for an API using a streamlined verison of [Clean Architecture](https://github.com/jasontaylordev/CleanArchitecture) alongside .NET's [Minimal APIs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis).
 
 ## Prerequisites
