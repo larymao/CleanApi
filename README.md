@@ -9,7 +9,7 @@ This is a template for an API using a streamlined verison of [Clean Architecture
 
 ## Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) - *[required]* 
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) - *[required]* 
 This solution in built on it, you need to install it before building and running.
 
 - [Docker](https://www.docker.com/products/docker-desktop) - *[optional]* 
