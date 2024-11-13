@@ -13,6 +13,8 @@ services:
       - cleanapi-logs:/app/logs/
     networks:
       - cleanapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     logging:
       driver: "json-file"
       options:
