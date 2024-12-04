@@ -2,6 +2,8 @@ using CleanApi.Application.Common.Interfaces;
 using CleanApi.Infrastructure.Data;
 using CleanApi.Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,22 @@ public static class DependencyInjection
             options.SuppressModelStateInvalidFilter = true);
 
         services.AddEndpointsApiExplorer();
+
+        services.AddOpenApiDocument((configure, sp) =>
+        {
+            configure.Title = "CleanApi API";
+
+            // Add JWT
+            configure.AddSecurity("JWT", [], new OpenApiSecurityScheme
+            {
+                Type = OpenApiSecuritySchemeType.ApiKey,
+                Name = "Authorization",
+                In = OpenApiSecurityApiKeyLocation.Header,
+                Description = "Type into the textbox: Bearer {your JWT token}."
+            });
+
+            configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
+        });
 
         return services;
     }

@@ -58,6 +58,6 @@ There are plenty of handy implementations of features throughout this solution, 
 - Object Mapping using [AutoMapper](https://github.com/AutoMapper/AutoMapper)
 - Mediator Pattern using [MediatR](https://github.com/jbogard/MediatR)
 - Validation using [FluentValidation](https://github.com/FluentValidation/FluentValidation)
-- OpenApi using [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
+- OpenApi using [NSwag](https://github.com/RicoSuter/NSwag)
 - Logging using [Serilog](https://github.com/serilog/serilog)
 - Testing using [NUnit](https://github.com/nunit/nunit), [Fluent Assertions](https://github.com/fluentassertions/fluentassertions), [Moq](https://github.com/devlooped/moq) & [Respawn](https://github.com/jbogard/Respawn)

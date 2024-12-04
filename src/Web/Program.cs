@@ -35,13 +35,11 @@ app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-if (app.Environment.IsDevelopment())
+app.UseSwaggerUi(settings =>
 {
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/api/specification.json", "CleanApi");
-    });
-}
+    settings.Path = "/api";
+    settings.DocumentPath = "/api/specification.json";
+});
 
 app.MapControllerRoute(
     name: "default",
@@ -49,7 +47,7 @@ app.MapControllerRoute(
 
 app.UseExceptionHandler(options => { });
 
-app.Map("/", () => Results.Redirect("/swagger"));
+app.Map("/", () => Results.Redirect("/api"));
 
 app.MapEndpoints();
 
