@@ -4,14 +4,14 @@
   <metadata>
 
     <id>CleanApi.Solution.Template</id>
-    <version>0.2.1</version>
-    <title>Clean Aapi Solution Template</title>
+    <version>0.2.2</version>
+    <title>Clean Api Solution Template</title>
     <authors>Lary Mao</authors>
     <description>
       A .NET 9 template for an API using a streamlined verison of Clean Architecture alongside .NET's Minimal APIs.
     </description>
     <releaseNotes>
-      ✨ Target to .NET 9
+      ✨ Migrate from sln to slnx
     </releaseNotes>
 
     <projectUrl>https://github.com/larymao/CleanApi</projectUrl>
