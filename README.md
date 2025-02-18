@@ -48,6 +48,14 @@ To learn something more about creating new solution from this template, run the 
 dotnet new cleanapi --help
 ```
 
+## Uninstallation
+
+To uninstall the template run the following command:
+
+```bash
+dotnet new uninstall CleanApi.Solution.Template
+```
+
 ## Features
 
 There are plenty of handy implementations of features throughout this solution, in no particular order here are some that might interest you.
