@@ -27,6 +27,7 @@ public class UpdateTodoItemCommandHandler(
         entity.Title = request.Title;
         entity.Done = request.Done;
 
+        _context.TodoItems.Update(entity);
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

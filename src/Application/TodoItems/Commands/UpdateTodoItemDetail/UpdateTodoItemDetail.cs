@@ -31,6 +31,7 @@ public class UpdateTodoItemDetailCommandHandler(
         entity.Priority = request.Priority;
         entity.Note = request.Note;
 
+        _context.TodoItems.Update(entity);
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

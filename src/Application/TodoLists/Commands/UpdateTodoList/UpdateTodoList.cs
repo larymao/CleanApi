@@ -24,6 +24,7 @@ public class UpdateTodoListCommandHandler(
 
         entity.Title = request.Title;
 
+        _context.TodoLists.Update(entity);
         await _context.SaveChangesAsync(cancellationToken);
 
     }

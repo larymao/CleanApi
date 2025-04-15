@@ -27,7 +27,13 @@ public static class DependencyInjection
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
 
-            options.UseNpgsql(connectionString);
+            options
+                .UseNpgsql(connectionString, options =>
+                {
+                    options.EnableRetryOnFailure(3);
+                    options.CommandTimeout(30);
+                })
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         });
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
