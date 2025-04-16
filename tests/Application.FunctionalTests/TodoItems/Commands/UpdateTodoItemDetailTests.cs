@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.TodoItems.Commands.CreateTodoItem;
+using CleanApi.Application.TodoItems.Commands.CreateTodoItem;
 using CleanApi.Application.TodoItems.Commands.UpdateTodoItem;
 using CleanApi.Application.TodoItems.Commands.UpdateTodoItemDetail;
 using CleanApi.Application.TodoLists.Commands.CreateTodoList;
@@ -14,7 +14,7 @@ public class UpdateTodoItemDetailTests : BaseTestFixture
     [Test]
     public async Task ShouldRequireValidTodoItemId()
     {
-        var command = new UpdateTodoItemCommand { Id = 99, Title = "New Title" };
+        var command = new UpdateTodoItemCommand { Id = "ffffffff-ffff-ffff-ffff-ffffffffffff", Title = "New Title" };
         await FluentActions.Invoking(() => SendAsync(command)).Should().ThrowAsync<NotFoundException>();
     }
 

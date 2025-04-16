@@ -6,7 +6,7 @@ namespace CleanApi.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
 public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {
-    public int ListId { get; init; }
+    public string ListId { get; init; } = default!;
     public int PageNumber { get; init; } = 1;
     public int PageSize { get; init; } = 10;
 }

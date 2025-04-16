@@ -4,7 +4,7 @@ namespace CleanApi.Application.TodoItems.Commands.UpdateTodoItem;
 
 public record UpdateTodoItemCommand : IRequest
 {
-    public int Id { get; init; }
+    public string Id { get; init; } = default!;
 
     public string? Title { get; init; }
 

@@ -1,6 +1,6 @@
-﻿using MediatR;
+using MediatR;
 
-namespace CleanApi.Domain.Common;
+namespace CleanApi.Domain.Events.Base;
 
 public abstract class BaseEvent : INotification
 {

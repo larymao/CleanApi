@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.TodoItems.Commands.CreateTodoItem;
+using CleanApi.Application.TodoItems.Commands.CreateTodoItem;
 using CleanApi.Application.TodoItems.Commands.DeleteTodoItem;
 using CleanApi.Application.TodoLists.Commands.CreateTodoList;
 using CleanApi.Domain.Entities;
@@ -12,7 +12,7 @@ public class DeleteTodoItemTests : BaseTestFixture
     [Test]
     public async Task ShouldRequireValidTodoItemId()
     {
-        var command = new DeleteTodoItemCommand(99);
+        var command = new DeleteTodoItemCommand("ffffffff-ffff-ffff-ffff-ffffffffffff");
 
         await FluentActions.Invoking(() =>
             SendAsync(command)).Should().ThrowAsync<NotFoundException>();

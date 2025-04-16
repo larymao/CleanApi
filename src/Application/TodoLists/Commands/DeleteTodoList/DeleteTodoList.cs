@@ -2,7 +2,7 @@ using CleanApi.Application.Common.Interfaces;
 
 namespace CleanApi.Application.TodoLists.Commands.DeleteTodoList;
 
-public record DeleteTodoListCommand(int Id) : IRequest;
+public record DeleteTodoListCommand(string Id) : IRequest;
 
 public class DeleteTodoListCommandHandler(
     IApplicationDbContext context)

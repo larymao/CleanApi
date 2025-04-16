@@ -20,10 +20,12 @@ public class GetTodosQueryHandler(
     {
         return new TodosVm
         {
-            PriorityLevels = Enum.GetValues(typeof(PriorityLevel))
-                .Cast<PriorityLevel>()
-                .Select(p => new LookupDto { Id = (int)p, Title = p.ToString() })
-                .ToList(),
+            PriorityLevels =
+            [
+                .. Enum.GetValues<PriorityLevel>()
+                    .Cast<PriorityLevel>()
+                    .Select(p => new LookupDto { Id = ((int)p).ToString(), Title = p.ToString() })
+            ],
 
             Lists = await _context.TodoLists
                 .AsNoTracking()

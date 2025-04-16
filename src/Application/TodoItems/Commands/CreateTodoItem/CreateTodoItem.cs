@@ -4,20 +4,20 @@ using CleanApi.Domain.Events;
 
 namespace CleanApi.Application.TodoItems.Commands.CreateTodoItem;
 
-public record CreateTodoItemCommand : IRequest<int>
+public record CreateTodoItemCommand : IRequest<string>
 {
-    public int ListId { get; init; }
+    public string ListId { get; init; } = default!;
 
     public string? Title { get; init; }
 }
 
 public class CreateTodoItemCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<CreateTodoItemCommand, int>
+    : IRequestHandler<CreateTodoItemCommand, string>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task<int> Handle(CreateTodoItemCommand request, CancellationToken cancellationToken)
+    public async Task<string> Handle(CreateTodoItemCommand request, CancellationToken cancellationToken)
     {
         var entity = new TodoItem
         {

@@ -9,7 +9,7 @@ public class TodoListDto
         Items = [];
     }
 
-    public int Id { get; init; }
+    public string Id { get; init; } = default!;
 
     public string? Title { get; init; }
 

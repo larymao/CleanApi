@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.Common.Exceptions;
+using CleanApi.Application.Common.Exceptions;
 using CleanApi.Application.TodoLists.Commands.CreateTodoList;
 using CleanApi.Application.TodoLists.Commands.UpdateTodoList;
 using CleanApi.Domain.Entities;
@@ -12,7 +12,7 @@ public class UpdateTodoListTests : BaseTestFixture
     [Test]
     public async Task ShouldRequireValidTodoListId()
     {
-        var command = new UpdateTodoListCommand { Id = 99, Title = "New Title" };
+        var command = new UpdateTodoListCommand { Id = "ffffffff-ffff-ffff-ffff-ffffffffffff", Title = "New Title" };
         await FluentActions.Invoking(() => SendAsync(command)).Should().ThrowAsync<NotFoundException>();
     }
 

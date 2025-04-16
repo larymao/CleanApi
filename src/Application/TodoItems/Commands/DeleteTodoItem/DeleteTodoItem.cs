@@ -3,7 +3,7 @@ using CleanApi.Domain.Events;
 
 namespace CleanApi.Application.TodoItems.Commands.DeleteTodoItem;
 
-public record DeleteTodoItemCommand(int Id) : IRequest;
+public record DeleteTodoItemCommand(string Id) : IRequest;
 
 public class DeleteTodoItemCommandHandler(
     IApplicationDbContext context)

@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.TodoLists.Commands.CreateTodoList;
+using CleanApi.Application.TodoLists.Commands.CreateTodoList;
 using CleanApi.Application.TodoLists.Commands.DeleteTodoList;
 using CleanApi.Application.TodoLists.Commands.UpdateTodoList;
 using CleanApi.Application.TodoLists.Queries.GetTodos;
@@ -22,19 +22,19 @@ public class TodoLists : EndpointGroupBase
         return  sender.Send(new GetTodosQuery());
     }
 
-    public Task<int> CreateTodoList(ISender sender, CreateTodoListCommand command)
+    public Task<string> CreateTodoList(ISender sender, CreateTodoListCommand command)
     {
         return sender.Send(command);
     }
 
-    public async Task<IResult> UpdateTodoList(ISender sender, int id, UpdateTodoListCommand command)
+    public async Task<IResult> UpdateTodoList(ISender sender, string id, UpdateTodoListCommand command)
     {
         if (id != command.Id) return Results.BadRequest();
         await sender.Send(command);
         return Results.NoContent();
     }
 
-    public async Task<IResult> DeleteTodoList(ISender sender, int id)
+    public async Task<IResult> DeleteTodoList(ISender sender, string id)
     {
         await sender.Send(new DeleteTodoListCommand(id));
         return Results.NoContent();

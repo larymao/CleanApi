@@ -1,10 +1,10 @@
-﻿using CleanApi.Domain.Entities;
+using CleanApi.Domain.Entities;
 
 namespace CleanApi.Application.Common.Models;
 
 public class LookupDto
 {
-    public int Id { get; init; }
+    public string Id { get; init; } = default!;
 
     public string? Title { get; init; }
 

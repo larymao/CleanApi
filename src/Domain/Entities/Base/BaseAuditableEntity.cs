@@ -1,4 +1,4 @@
-﻿namespace CleanApi.Domain.Common;
+namespace CleanApi.Domain.Entities.Base;
 
 public abstract class BaseAuditableEntity : BaseEntity
 {

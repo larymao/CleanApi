@@ -1,8 +1,10 @@
-﻿namespace CleanApi.Domain.Entities;
+using CleanApi.Domain.Entities.Base;
+
+namespace CleanApi.Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {
-    public int ListId { get; set; }
+    public string ListId { get; set; } = default!;
 
     public string? Title { get; set; }
 

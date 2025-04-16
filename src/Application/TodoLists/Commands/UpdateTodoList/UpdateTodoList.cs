@@ -4,7 +4,7 @@ namespace CleanApi.Application.TodoLists.Commands.UpdateTodoList;
 
 public record UpdateTodoListCommand : IRequest
 {
-    public int Id { get; init; }
+    public string Id { get; init; } = default!;
 
     public string? Title { get; init; }
 }

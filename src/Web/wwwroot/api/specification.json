@@ -18,8 +18,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -85,8 +85,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer",
-                  "format": "int32"
+                  "type": "string"
                 }
               }
             }
@@ -111,8 +110,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             },
             "x-position": 1
           }
@@ -151,8 +149,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             },
             "x-position": 1
           }
@@ -181,8 +178,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             },
             "x-position": 1
           }
@@ -258,8 +254,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer",
-                  "format": "int32"
+                  "type": "string"
                 }
               }
             }
@@ -284,8 +279,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             },
             "x-position": 1
           }
@@ -324,8 +318,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             },
             "x-position": 1
           }
@@ -797,12 +790,10 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "listId": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",
@@ -818,8 +809,7 @@
         "additionalProperties": false,
         "properties": {
           "listId": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",
@@ -832,8 +822,7 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",
@@ -849,12 +838,10 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "listId": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "priority": {
             "$ref": "#/components/schemas/PriorityLevel"
@@ -904,8 +891,7 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",
@@ -918,8 +904,7 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",
@@ -942,12 +927,10 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "listId": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",
@@ -981,8 +964,7 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           "title": {
             "type": "string",

@@ -5,9 +5,9 @@ namespace CleanApi.Application.TodoItems.Commands.UpdateTodoItemDetail;
 
 public record UpdateTodoItemDetailCommand : IRequest
 {
-    public int Id { get; init; }
+    public string Id { get; init; } = default!;
 
-    public int ListId { get; init; }
+    public string ListId { get; init; } = default!;
 
     public PriorityLevel Priority { get; init; }
 

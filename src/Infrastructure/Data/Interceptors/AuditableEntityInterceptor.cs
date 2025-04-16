@@ -1,5 +1,5 @@
 using CleanApi.Application.Common.Interfaces;
-using CleanApi.Domain.Common;
+using CleanApi.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;

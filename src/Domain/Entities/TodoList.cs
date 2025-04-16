@@ -1,3 +1,5 @@
+using CleanApi.Domain.Entities.Base;
+
 namespace CleanApi.Domain.Entities;
 
 public class TodoList : BaseAuditableEntity

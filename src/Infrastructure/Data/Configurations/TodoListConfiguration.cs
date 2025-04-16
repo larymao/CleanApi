@@ -1,4 +1,4 @@
-﻿using CleanApi.Domain.Entities;
+using CleanApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,5 +14,10 @@ public class TodoListConfiguration : IEntityTypeConfiguration<TodoList>
 
         builder
             .OwnsOne(b => b.Colour);
+
+        builder.HasMany(l => l.Items)
+            .WithOne(i => i.List)
+            .HasForeignKey(i => i.ListId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
