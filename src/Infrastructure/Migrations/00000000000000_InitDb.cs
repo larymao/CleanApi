@@ -30,12 +30,12 @@ namespace CleanApi.Infrastructure.Migrations
                 name: "todo_lists",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "text", nullable: false),
+                    id = table.Column<string>(type: "text", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     title = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     colour_code = table.Column<string>(type: "text", nullable: false),
-                    created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    created = table.Column<DateTimeOffset>(type: "timestamp(0) with time zone", nullable: false),
                     created_by = table.Column<string>(type: "text", nullable: true),
-                    last_modified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    last_modified = table.Column<DateTimeOffset>(type: "timestamp(0) with time zone", nullable: false),
                     last_modified_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -93,16 +93,16 @@ namespace CleanApi.Infrastructure.Migrations
                 name: "todo_items",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "text", nullable: false),
+                    id = table.Column<string>(type: "text", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     list_id = table.Column<string>(type: "text", nullable: false),
                     title = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     note = table.Column<string>(type: "text", nullable: true),
                     priority = table.Column<int>(type: "integer", nullable: false),
                     reminder = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     done = table.Column<bool>(type: "boolean", nullable: false),
-                    created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    created = table.Column<DateTimeOffset>(type: "timestamp(0) with time zone", nullable: false),
                     created_by = table.Column<string>(type: "text", nullable: true),
-                    last_modified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    last_modified = table.Column<DateTimeOffset>(type: "timestamp(0) with time zone", nullable: false),
                     last_modified_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>

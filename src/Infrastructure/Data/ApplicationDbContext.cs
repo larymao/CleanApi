@@ -1,9 +1,7 @@
 using CleanApi.Application.Common.Interfaces;
-using CleanApi.Domain.Entities;
 using CleanApi.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace CleanApi.Infrastructure.Data;

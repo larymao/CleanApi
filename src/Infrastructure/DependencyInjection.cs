@@ -4,7 +4,6 @@ using CleanApi.Infrastructure.Data;
 using CleanApi.Infrastructure.Data.Interceptors;
 using CleanApi.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 

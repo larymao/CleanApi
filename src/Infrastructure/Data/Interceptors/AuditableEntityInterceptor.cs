@@ -1,6 +1,4 @@
 using CleanApi.Application.Common.Interfaces;
-using CleanApi.Domain.Entities.Base;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -41,7 +39,7 @@ public class AuditableEntityInterceptor(
                 {
                     entry.Entity.CreatedBy = _user.Id;
                     entry.Entity.Created = utcNow;
-                } 
+                }
                 entry.Entity.LastModifiedBy = _user.Id;
                 entry.Entity.LastModified = utcNow;
             }
@@ -52,8 +50,8 @@ public class AuditableEntityInterceptor(
 public static class Extensions
 {
     public static bool HasChangedOwnedEntities(this EntityEntry entry) =>
-        entry.References.Any(r => 
-            r.TargetEntry != null && 
-            r.TargetEntry.Metadata.IsOwned() && 
+        entry.References.Any(r =>
+            r.TargetEntry != null &&
+            r.TargetEntry.Metadata.IsOwned() &&
             (r.TargetEntry.State == EntityState.Added || r.TargetEntry.State == EntityState.Modified));
 }

@@ -1,9 +1,7 @@
 using CleanApi.Domain.Constants;
-using CleanApi.Domain.Entities;
 using CleanApi.Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

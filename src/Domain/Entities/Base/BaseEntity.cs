@@ -5,7 +5,7 @@ namespace CleanApi.Domain.Entities.Base;
 
 public abstract class BaseEntity
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = default!;
 
     private readonly List<BaseEvent> _domainEvents = [];
 

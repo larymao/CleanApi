@@ -1,13 +1,13 @@
-using CleanApi.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CleanApi.Infrastructure.Data.Configurations;
 
-public class TodoListConfiguration : IEntityTypeConfiguration<TodoList>
+public class TodoListConfiguration : BaseAuditableEntityConfiguration<TodoList>
 {
-    public void Configure(EntityTypeBuilder<TodoList> builder)
+    public override void Configure(EntityTypeBuilder<TodoList> builder)
     {
+        base.Configure(builder);
+
         builder.Property(t => t.Title)
             .HasMaxLength(200)
             .IsRequired();

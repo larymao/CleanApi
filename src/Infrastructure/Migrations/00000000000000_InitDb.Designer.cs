@@ -28,11 +28,13 @@ namespace CleanApi.Infrastructure.Migrations
             modelBuilder.Entity("CleanApi.Domain.Entities.TodoItem", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("text")
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp(0) with time zone")
                         .HasColumnName("created");
 
                     b.Property<string>("CreatedBy")
@@ -44,7 +46,7 @@ namespace CleanApi.Infrastructure.Migrations
                         .HasColumnName("done");
 
                     b.Property<DateTimeOffset>("LastModified")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp(0) with time zone")
                         .HasColumnName("last_modified");
 
                     b.Property<string>("LastModifiedBy")
@@ -86,11 +88,13 @@ namespace CleanApi.Infrastructure.Migrations
             modelBuilder.Entity("CleanApi.Domain.Entities.TodoList", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("text")
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp(0) with time zone")
                         .HasColumnName("created");
 
                     b.Property<string>("CreatedBy")
@@ -98,7 +102,7 @@ namespace CleanApi.Infrastructure.Migrations
                         .HasColumnName("created_by");
 
                     b.Property<DateTimeOffset>("LastModified")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp(0) with time zone")
                         .HasColumnName("last_modified");
 
                     b.Property<string>("LastModifiedBy")
@@ -378,6 +382,7 @@ namespace CleanApi.Infrastructure.Migrations
                     b.OwnsOne("CleanApi.Domain.ValueObjects.Colour", "Colour", b1 =>
                         {
                             b1.Property<string>("TodoListId")
+                                .ValueGeneratedOnAdd()
                                 .HasColumnType("text")
                                 .HasColumnName("id");
 

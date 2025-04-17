@@ -1,6 +1,4 @@
-using CleanApi.Domain.Entities.Base;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace CleanApi.Infrastructure.Data.Interceptors;
