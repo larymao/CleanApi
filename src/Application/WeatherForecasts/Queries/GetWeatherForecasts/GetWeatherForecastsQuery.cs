@@ -9,20 +9,20 @@ public class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecas
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-    public async Task<IEnumerable<WeatherForecast>> Handle(GetWeatherForecastsQuery request, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+    public Task<IEnumerable<WeatherForecast>> Handle(GetWeatherForecastsQuery request, CancellationToken cancellationToken)
     {
         var rng = new Random();
 
         if (rng.Next(10) < 5)
             throw new Exception("not work");
 
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
             TemperatureC = rng.Next(-20, 55),
             Summary = Summaries[rng.Next(Summaries.Length)]
         });
+
+        return Task.FromResult(result);
     }
 }
