@@ -4,14 +4,17 @@
   <metadata>
 
     <id>CleanApi.Solution.Template</id>
-    <version>0.2.3</version>
+    <version>0.2.5</version>
     <title>Clean Api Solution Template</title>
     <authors>Lary Mao</authors>
     <description>
       A .NET 9 template for an API using a streamlined verison of Clean Architecture alongside .NET's Minimal APIs.
     </description>
     <releaseNotes>
-      ✨ DB pooling
+      💡 set the default db behavior as not tracking queries
+      💡 set entity id to be guid string
+      💡 set db naming style to be snake case
+      💡 customize the base entity configuration
     </releaseNotes>
 
     <projectUrl>https://github.com/larymao/CleanApi</projectUrl>
@@ -19,7 +22,7 @@
 
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>clean-api clean-architechture minimal-api template csharp dotnet</tags>
+    <tags>clean-api clean-architechture minimal-api template dotnet</tags>
     <icon>icon.png</icon>
     <readme>README.md</readme>
 
@@ -32,7 +35,7 @@
   <files>
     <file src=".template.config\icon.png" />
     <file src="README.md" />
-    <file src="**" target="content\" exclude="**\bin\**;**\obj\**;**\logs\**;.vs\**;.vscode\**;.git\**;.github\**;**\*.filelist;**\*.user;**\*.lock.json;LICENSE;README.md;" />
+    <file src="**" target="content\" exclude="**\bin\**;**\obj\**;**\logs\**;.vs\**;.vscode\**;.git\**;.github\**;**\*.filelist;**\*.user;**\*.lock.json;LICENSE;README.md;README_CN.md;" />
   </files>
 
 </package>

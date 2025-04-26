@@ -36,7 +36,8 @@
         "**/*.lock.json",
         "*.nuspec",
         "LICENSE",
-        "README.md"
+        "README.md",
+        "README_CN.md"
       ],
       "modifiers": [
         {
