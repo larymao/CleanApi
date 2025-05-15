@@ -8,6 +8,8 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore:
+      - .cursor/**
+      - .template.config/**
       - LICENSE
       - README.md
       - README_CN.md
