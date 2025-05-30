@@ -22,13 +22,30 @@ If you want to launch this solution quickly via the docker-compose.yml you will 
 
 ## Installation
 
-This is a [.NET template](https://www.nuget.org/packages/CleanApi.Solution.Template) and you can install it using the [dotnet new cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new). To install the lastest version of the template run the following command.
+This is a [.NET template](https://www.nuget.org/packages/CleanApi.Solution.Template) and you can install it using the [dotnet new cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new). 
+
+### Option 1: Install from NuGet (Recommended)
 
 ``` bash
 dotnet new install CleanApi.Solution.Template
 ```
 
-To create a new solution using this template run one of the following commands
+### Option 2: Install from source
+
+```bash
+# 1. clone this repository
+git clone https://github.com/larymao/CleanApi.git cleanapi
+
+# 2. navigate to the repository root
+cd cleanapi
+
+# 3. install the template
+dotnet new install .
+```
+
+## Usage
+
+To scaffold a new solution with this template, execute one of the following commands:
 
 ```bash
 # new solution with git initialized
@@ -44,10 +61,18 @@ And then you could modify contents of `docker-compose.yml`, `src/Web/Dockerfile`
 - *postgres connection string in config files*
 - *dockerfile labels*
 
-To learn something more about creating new solution from this template, run the following command:
+### Database
+
+This template is designed to work exclusively with [PostgreSQL](https://www.postgresql.org). The database integration offers several automated features:
+
+- **Auto Database Creation**: The database is automatically created on first run if it doesn't exist
+- **Auto Migration**: All pending migrations are automatically applied during application startup
+- **Code-First Approach**: Uses Entity Framework Core's code-first pattern for database schema management
+
+When you need to make changes to your database schema, you can create a new migration using the provided script:
 
 ```bash
-dotnet new cleanapi --help
+./scripts/add_migration.sh SampleMigrationName
 ```
 
 ## Uninstallation
@@ -56,6 +81,14 @@ To uninstall the template run the following command:
 
 ```bash
 dotnet new uninstall CleanApi.Solution.Template
+```
+
+*OR*
+
+If you installed this template from source code, enter the root directory of this repo, and run the following command:
+
+```bash
+dotnet new uninstall .
 ```
 
 ## Features

@@ -22,11 +22,28 @@
 
 ## 安装
 
-这是一个 [.NET 模板](https://www.nuget.org/packages/CleanApi.Solution.Template)，你可以使用 [dotnet new cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new) 进行安装。要安装最新版本的模板，请运行以下命令：
+这是一个 [.NET 模板](https://www.nuget.org/packages/CleanApi.Solution.Template)，你可以使用 [dotnet new cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new) 进行安装。
+
+### 选项 1：从 NuGet 安装（推荐）
 
 ``` bash
 dotnet new install CleanApi.Solution.Template
 ```
+
+### 选项 2：从源代码安装
+
+```bash
+# 1. 克隆此仓库
+git clone https://github.com/larymao/CleanApi.git cleanapi
+
+# 2. 进入仓库根目录
+cd cleanapi
+
+# 3. 安装模板
+dotnet new install .
+```
+
+## 使用说明
 
 要使用此模板创建新的解决方案，请运行以下命令之一：
 
@@ -50,12 +67,34 @@ dotnet new cleanapi --git false --name {YOUR_SOLUTION_NAMESPACE}
 dotnet new cleanapi --help
 ```
 
+### 数据库
+
+本模板仅适用于 [PostgreSQL](https://www.postgresql.org)，集成了多项数据库自动化特性：
+
+- **自动创建数据库**：首次运行时，如果数据库不存在将自动创建
+- **自动迁移**：应用程序启动时会自动应用所有待处理的迁移
+- **代码优先模式**：采用 Entity Framework Core 的代码优先模式管理数据库架构
+
+当你需要修改数据库架构时，可以使用提供的脚本创建新的迁移：
+
+```bash
+./scripts/add_migration.sh SampleMigrationName
+```
+
 ## 卸载
 
 要卸载模板，请运行以下命令：
 
 ```bash
 dotnet new uninstall CleanApi.Solution.Template
+```
+
+*或者*
+
+如果你是从源代码安装的模板，请进入仓库根目录，然后运行以下命令：
+
+```bash
+dotnet new uninstall .
 ```
 
 ## 功能

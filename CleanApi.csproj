@@ -41,7 +41,7 @@
         <None Include=".template.config\icon.png" Pack="true" PackagePath="\" />
         <None Include="README.md" Pack="true" PackagePath="\" />
         <None Include="README_CN.md" Pack="true" PackagePath="\" />
-        <Content Include="**" Exclude="**\bin\**;**\obj\**;**\logs\**;.vs\**;.vscode\**;.git\**;.github\**;**\*.filelist;**\*.user;**\*.lock.json;LICENSE;README.md;README_CN.md;CleanApi.csproj" />
+        <Content Include="**" Exclude="**\bin\**;**\obj\**;**\logs\**;**\TestResults\**;.vs\**;.vscode\**;.git\**;.github\workflows\**;**\*.filelist;**\*.user;**\*.lock.json;**\*.nupkg;CleanApi.csproj;LICENSE;README.md;README_CN.md" />
         <Compile Remove="**\*" />
     </ItemGroup>
 
