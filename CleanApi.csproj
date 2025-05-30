@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>0.2.5</PackageVersion>
+        <PackageVersion>0.2.6</PackageVersion>
         <PackageId>CleanApi.Solution.Template</PackageId>
         <PackageTags>clean-api;clean-architechture;minimal-api;template;dotnet</PackageTags>
         <IsPackable>true</IsPackable>
@@ -30,10 +30,9 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryBranch>main</RepositoryBranch>
         <PackageReleaseNotes>
-            💡 set the default db behavior as not tracking queries
-            💡 set entity id to be guid string
-            💡 set db naming style to be snake case
-            💡 customize the base entity configuration
+            💡 update packages
+            💡 add cursor rule
+            💡 add copilot instruction
         </PackageReleaseNotes>
     </PropertyGroup>
 
