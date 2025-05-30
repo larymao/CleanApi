@@ -61,6 +61,43 @@ And then you could modify contents of `docker-compose.yml`, `src/Web/Dockerfile`
 - *postgres connection string in config files*
 - *dockerfile labels*
 
+### Scripts
+
+This template comes with several built-in commands to help you manage your project. You can run these commands using `make`:
+
+```bash
+# Restore project dependencies
+make restore
+
+# Build the project
+make build
+
+# Run all tests
+make test
+
+# Clean build outputs and test results
+make clean
+
+# Publish the application
+make publish
+
+# Run the application with watch mode (hot reload)
+make watch
+
+# Run the application
+make run
+
+# Add a new database migration
+make migration name=YourMigrationName
+```
+
+These commands are designed to work consistently across Windows (WSL), macOS, and Linux environments. Before using them, make sure you have the following prerequisites:
+
+- GNU Make installed
+- .NET SDK installed
+- Entity Framework Core tools installed (`dotnet tool install --global dotnet-ef`)
+
+
 ### Database
 
 This template is designed to work exclusively with [PostgreSQL](https://www.postgresql.org). The database integration offers several automated features:
@@ -72,7 +109,7 @@ This template is designed to work exclusively with [PostgreSQL](https://www.post
 When you need to make changes to your database schema, you can create a new migration using the provided script:
 
 ```bash
-./scripts/add_migration.sh SampleMigrationName
+make migration name=YourMigrationName
 ```
 
 ## Uninstallation

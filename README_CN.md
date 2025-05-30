@@ -67,6 +67,42 @@ dotnet new cleanapi --git false --name {YOUR_SOLUTION_NAMESPACE}
 dotnet new cleanapi --help
 ```
 
+### 脚本命令
+
+本模板内置了多个实用的命令来帮助您管理项目。您可以使用 `make` 来运行这些命令：
+
+```bash
+# 还原项目依赖
+make restore
+
+# 构建项目
+make build
+
+# 运行所有测试
+make test
+
+# 清理构建输出和测试结果
+make clean
+
+# 发布应用程序
+make publish
+
+# 以监视模式运行应用（热重载）
+make watch
+
+# 运行应用程序
+make run
+
+# 添加新的数据库迁移
+make migration name=YourMigrationName
+```
+
+这些命令设计为可以在 Windows（WSL）、macOS 和 Linux 环境中一致地工作。在使用之前，请确保您已安装以下先决条件：
+
+- GNU Make
+- .NET SDK
+- Entity Framework Core 工具（`dotnet tool install --global dotnet-ef`）
+
 ### 数据库
 
 本模板仅适用于 [PostgreSQL](https://www.postgresql.org)，集成了多项数据库自动化特性：
@@ -78,7 +114,7 @@ dotnet new cleanapi --help
 当你需要修改数据库架构时，可以使用提供的脚本创建新的迁移：
 
 ```bash
-./scripts/add_migration.sh SampleMigrationName
+make migration name=YourMigrationName
 ```
 
 ## 卸载
