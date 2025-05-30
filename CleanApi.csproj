@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>0.2.6</PackageVersion>
+        <PackageVersion>0.2.7</PackageVersion>
         <PackageId>CleanApi.Solution.Template</PackageId>
         <PackageTags>clean-api;clean-architechture;minimal-api;template;dotnet</PackageTags>
         <IsPackable>true</IsPackable>
@@ -30,16 +30,16 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryBranch>main</RepositoryBranch>
         <PackageReleaseNotes>
-            💡 update packages
-            💡 add cursor rule
-            💡 add copilot instruction
+✨ add cursor rule
+✨ add copilot instruction
+✨ add makefile
+📦 update packages
         </PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include=".template.config\icon.png" Pack="true" PackagePath="\" />
         <None Include="README.md" Pack="true" PackagePath="\" />
-        <None Include="README_CN.md" Pack="true" PackagePath="\" />
         <Content Include="**" Exclude="**\bin\**;**\obj\**;**\logs\**;**\TestResults\**;.vs\**;.vscode\**;.git\**;.github\workflows\**;**\*.filelist;**\*.user;**\*.lock.json;**\*.nupkg;CleanApi.csproj;LICENSE;README.md;README_CN.md" />
         <Compile Remove="**\*" />
     </ItemGroup>

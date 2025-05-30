@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/larymao/cleanapi/blob/master/LICENSE) 
 [![Nuget](https://img.shields.io/nuget/v/CleanApi.Solution.Template?color=0b7cbd)](https://www.nuget.org/packages/CleanApi.Solution.Template)
 
-[🌟 English](README.md) | [🌏 中文](README_CN.md)
+[🌟 English](https://github.com/larymao/CleanApi/blob/main/README.md) | [🌏 中文](https://github.com/larymao/CleanApi/blob/main/README_CN.md)
 
 This is a template for an API using a streamlined verison of [Clean Architecture](https://github.com/jasontaylordev/CleanArchitecture) alongside .NET's [Minimal APIs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis).
 
