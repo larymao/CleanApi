@@ -136,7 +136,7 @@ There are plenty of handy implementations of features throughout this solution, 
 - Authentication using [JWT Token](https://jwt.io/introduction)
 - Data Storage using [Postgres](https://github.com/postgres/postgres)
 - Data accessing using [EFCore](https://github.com/dotnet/efcore) with [Code First Mode](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations)
-- Object Mapping using [AutoMapper](https://github.com/AutoMapper/AutoMapper)
+- Object Mapping using [Mapster](https://github.com/MapsterMapper/Mapster)
 - Mediator Pattern using [MediatR](https://github.com/jbogard/MediatR)
 - Validation using [FluentValidation](https://github.com/FluentValidation/FluentValidation)
 - OpenApi using [NSwag](https://github.com/RicoSuter/NSwag)

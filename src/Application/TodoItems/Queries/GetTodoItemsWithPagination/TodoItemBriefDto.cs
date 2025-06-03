@@ -12,11 +12,11 @@ public class TodoItemBriefDto
 
     public bool Done { get; init; }
 
-    private class Mapping : Profile
+    private class Mapping : IRegister
     {
-        public Mapping()
+        public void Register(TypeAdapterConfig config)
         {
-            CreateMap<TodoItem, TodoItemBriefDto>();
+            config.NewConfig<TodoItem, TodoItemBriefDto>();
         }
     }
 }

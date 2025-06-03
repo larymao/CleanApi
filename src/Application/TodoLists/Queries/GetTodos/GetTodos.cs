@@ -9,12 +9,10 @@ namespace CleanApi.Application.TodoLists.Queries.GetTodos;
 public record GetTodosQuery : IRequest<TodosVm>;
 
 public class GetTodosQueryHandler(
-    IApplicationDbContext context,
-    IMapper mapper)
+    IApplicationDbContext context)
     : IRequestHandler<GetTodosQuery, TodosVm>
 {
     private readonly IApplicationDbContext _context = context;
-    private readonly IMapper _mapper = mapper;
 
     public async Task<TodosVm> Handle(GetTodosQuery request, CancellationToken cancellationToken)
     {
@@ -29,7 +27,7 @@ public class GetTodosQueryHandler(
 
             Lists = await _context.TodoLists
                 .AsNoTracking()
-                .ProjectTo<TodoListDto>(_mapper.ConfigurationProvider)
+                .ProjectToType<TodoListDto>()
                 .OrderBy(t => t.Title)
                 .ToListAsync(cancellationToken)
         };

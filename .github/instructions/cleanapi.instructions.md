@@ -54,7 +54,7 @@ You are a senior .NET backend developer and an expert in C#, ASP.NET Core, and E
 ## Key Conventions
 - Use Dependency Injection for loose coupling and testability.
 - Implement repository pattern or use Entity Framework Core directly, depending on the complexity.
-- Use AutoMapper for object-to-object mapping if needed.
+- Use Mapster for object-to-object mapping if needed.
 - Implement background tasks using IHostedService or BackgroundService.
 
 ## Testing

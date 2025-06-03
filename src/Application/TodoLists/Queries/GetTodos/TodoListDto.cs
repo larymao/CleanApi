@@ -17,11 +17,11 @@ public class TodoListDto
 
     public IReadOnlyCollection<TodoItemDto> Items { get; init; }
 
-    private class Mapping : Profile
+    private class Mapping : IRegister
     {
-        public Mapping()
+        public void Register(TypeAdapterConfig config)
         {
-            CreateMap<TodoList, TodoListDto>();
+            config.NewConfig<TodoList, TodoListDto>();
         }
     }
 }

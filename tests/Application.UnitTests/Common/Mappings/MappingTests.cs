@@ -1,32 +1,29 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using AutoMapper;
 using CleanApi.Application.Common.Interfaces;
 using CleanApi.Application.Common.Models;
 using CleanApi.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 using CleanApi.Application.TodoLists.Queries.GetTodos;
 using CleanApi.Domain.Entities;
+using Mapster;
 using NUnit.Framework;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace CleanApi.Application.UnitTests.Common.Mappings;
 
 public class MappingTests
 {
-    private readonly IConfigurationProvider _configuration;
-    private readonly IMapper _mapper;
+    private readonly TypeAdapterConfig _config;
 
     public MappingTests()
     {
-        _configuration = new MapperConfiguration(config => 
-            config.AddMaps(Assembly.GetAssembly(typeof(IApplicationDbContext))));
-
-        _mapper = _configuration.CreateMapper();
+        _config = TypeAdapterConfig.GlobalSettings;
+        _config.Scan(Assembly.GetAssembly(typeof(IApplicationDbContext))!);
     }
 
     [Test]
     public void ShouldHaveValidConfiguration()
     {
-        _configuration.AssertConfigurationIsValid();
+        _config.Compile();
     }
 
     [Test]
@@ -39,10 +36,10 @@ public class MappingTests
     {
         var instance = GetInstanceOf(source);
 
-        _mapper.Map(instance, source, destination);
+        instance.Adapt(source, destination, _config);
     }
 
-    private object GetInstanceOf(Type type)
+    private static object GetInstanceOf(Type type)
     {
         if (type.GetConstructor(Type.EmptyTypes) != null)
             return Activator.CreateInstance(type)!;

@@ -12,19 +12,17 @@ public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemB
 }
 
 public class GetTodoItemsWithPaginationQueryHandler(
-    IApplicationDbContext context,
-    IMapper mapper)
+    IApplicationDbContext context)
     : IRequestHandler<GetTodoItemsWithPaginationQuery, PaginatedList<TodoItemBriefDto>>
 {
     private readonly IApplicationDbContext _context = context;
-    private readonly IMapper _mapper = mapper;
 
     public async Task<PaginatedList<TodoItemBriefDto>> Handle(GetTodoItemsWithPaginationQuery request, CancellationToken cancellationToken)
     {
         return await _context.TodoItems
             .Where(x => x.ListId == request.ListId)
             .OrderBy(x => x.Title)
-            .ProjectTo<TodoItemBriefDto>(_mapper.ConfigurationProvider)
+            .ProjectToType<TodoItemBriefDto>()
             .PaginatedListAsync(request.PageNumber, request.PageSize);
     }
 }

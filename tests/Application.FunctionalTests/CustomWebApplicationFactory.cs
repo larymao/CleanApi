@@ -1,4 +1,3 @@
-using System.Data.Common;
 using CleanApi.Application.Common.Interfaces;
 using CleanApi.Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Data.Common;
 
 namespace CleanApi.Application.FunctionalTests;
 
