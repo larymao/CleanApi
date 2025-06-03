@@ -1,22 +1,21 @@
 using CleanApi.Application.Common.Interfaces;
-using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
 namespace CleanApi.Application.Common.Behaviours;
 
-public class LoggingBehaviour<TRequest>(
-    ILogger<TRequest> logger,
+public class LoggingBehaviour<TMessage, TResponse>(
+    ILogger<TMessage> logger,
     IUser user,
     IIdentityService identityService)
-    : IRequestPreProcessor<TRequest> where TRequest : notnull
+    : IPipelineBehavior<TMessage, TResponse> where TMessage : IMessage
 {
     private readonly ILogger _logger = logger;
     private readonly IUser _user = user;
     private readonly IIdentityService _identityService = identityService;
 
-    public async Task Process(TRequest request, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
     {
-        var requestName = typeof(TRequest).Name;
+        var requestName = typeof(TMessage).Name;
         var userId = _user.Id ?? string.Empty;
         string? userName = string.Empty;
 
@@ -26,6 +25,8 @@ public class LoggingBehaviour<TRequest>(
         }
 
         _logger.LogInformation("CleanApi Request: {Name} {@UserId} {@UserName} {@Request}",
-            requestName, userId, userName, request);
+            requestName, userId, userName, message);
+
+        return await next(message, cancellationToken);
     }
 }

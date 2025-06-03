@@ -4,7 +4,7 @@ using CleanApi.Domain.Events;
 
 namespace CleanApi.Application.TodoItems.Commands.CreateTodoItem;
 
-public record CreateTodoItemCommand : IRequest<string>
+public record CreateTodoItemCommand : ICommand<string>
 {
     public string ListId { get; init; } = default!;
 
@@ -13,11 +13,11 @@ public record CreateTodoItemCommand : IRequest<string>
 
 public class CreateTodoItemCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<CreateTodoItemCommand, string>
+    : ICommandHandler<CreateTodoItemCommand, string>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task<string> Handle(CreateTodoItemCommand request, CancellationToken cancellationToken)
+    public async ValueTask<string> Handle(CreateTodoItemCommand request, CancellationToken cancellationToken)
     {
         var entity = new TodoItem
         {

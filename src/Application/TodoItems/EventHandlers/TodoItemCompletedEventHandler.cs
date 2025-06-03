@@ -9,10 +9,10 @@ public class TodoItemCompletedEventHandler(
 {
     private readonly ILogger<TodoItemCompletedEventHandler> _logger = logger;
 
-    public Task Handle(TodoItemCompletedEvent notification, CancellationToken cancellationToken)
+    public ValueTask Handle(TodoItemCompletedEvent notification, CancellationToken cancellationToken)
     {
         _logger.LogInformation("CleanApi Domain Event: {DomainEvent}", notification.GetType().Name);
 
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }

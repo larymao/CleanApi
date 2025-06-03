@@ -6,15 +6,15 @@ using CleanApi.Domain.Enums;
 namespace CleanApi.Application.TodoLists.Queries.GetTodos;
 
 [Authorize]
-public record GetTodosQuery : IRequest<TodosVm>;
+public record GetTodosQuery : IQuery<TodosVm>;
 
 public class GetTodosQueryHandler(
     IApplicationDbContext context)
-    : IRequestHandler<GetTodosQuery, TodosVm>
+    : IQueryHandler<GetTodosQuery, TodosVm>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task<TodosVm> Handle(GetTodosQuery request, CancellationToken cancellationToken)
+    public async ValueTask<TodosVm> Handle(GetTodosQuery request, CancellationToken cancellationToken)
     {
         return new TodosVm
         {

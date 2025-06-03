@@ -2,18 +2,17 @@ using ValidationException = CleanApi.Application.Common.Exceptions.ValidationExc
 
 namespace CleanApi.Application.Common.Behaviours;
 
-public class ValidationBehaviour<TRequest, TResponse>(
-    IEnumerable<IValidator<TRequest>> validators)
-    : IPipelineBehavior<TRequest, TResponse>
-     where TRequest : notnull
+public class ValidationBehaviour<TMessage, TResponse>(
+    IEnumerable<IValidator<TMessage>> validators)
+    : IPipelineBehavior<TMessage, TResponse> where TMessage : IMessage
 {
-    private readonly IEnumerable<IValidator<TRequest>> _validators = validators;
+    private readonly IEnumerable<IValidator<TMessage>> _validators = validators;
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
     {
         if (_validators.Any())
         {
-            var context = new ValidationContext<TRequest>(request);
+            var context = new ValidationContext<TMessage>(message);
 
             var validationResults = await Task.WhenAll(
                 _validators.Select(v =>
@@ -28,6 +27,6 @@ public class ValidationBehaviour<TRequest, TResponse>(
                 throw new ValidationException(failures);
         }
 
-        return await next(cancellationToken);
+        return await next(message, cancellationToken);
     }
 }

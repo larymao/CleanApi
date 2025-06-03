@@ -26,6 +26,12 @@ public static class DependencyInjection
 
         services.AddControllers();
 
+        // Add Mediator with Scoped lifetime
+        services.AddMediator(options =>
+        {
+            options.ServiceLifetime = ServiceLifetime.Scoped;
+        });
+
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
             options.SuppressModelStateInvalidFilter = true);

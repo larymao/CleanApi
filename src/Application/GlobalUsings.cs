@@ -1,5 +1,5 @@
-﻿global using Ardalis.GuardClauses;
-global using Mapster;
-global using Microsoft.EntityFrameworkCore;
+global using Ardalis.GuardClauses;
 global using FluentValidation;
-global using MediatR;
+global using Mapster;
+global using Mediator;
+global using Microsoft.EntityFrameworkCore;

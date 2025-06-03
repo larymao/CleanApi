@@ -17,14 +17,14 @@ public class TodoLists : EndpointGroupBase
             .MapDelete(DeleteTodoList, "{id}");
     }
 
-    public Task<TodosVm> GetTodoLists(ISender sender)
+    public async Task<TodosVm> GetTodoLists(ISender sender)
     {
-        return  sender.Send(new GetTodosQuery());
+        return await sender.Send(new GetTodosQuery());
     }
 
-    public Task<string> CreateTodoList(ISender sender, CreateTodoListCommand command)
+    public async Task<string> CreateTodoList(ISender sender, CreateTodoListCommand command)
     {
-        return sender.Send(command);
+        return await sender.Send(command);
     }
 
     public async Task<IResult> UpdateTodoList(ISender sender, string id, UpdateTodoListCommand command)

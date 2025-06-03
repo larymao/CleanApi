@@ -4,30 +4,29 @@ using Microsoft.Extensions.Logging;
 
 namespace CleanApi.Application.Common.Behaviours;
 
-public class PerformanceBehaviour<TRequest, TResponse>(
-    ILogger<TRequest> logger,
+public class PerformanceBehaviour<TMessage, TResponse>(
+    ILogger<TMessage> logger,
     IUser user,
     IIdentityService identityService)
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+    : IPipelineBehavior<TMessage, TResponse> where TMessage : IMessage
 {
-    private readonly Stopwatch _timer = new();
-    private readonly ILogger<TRequest> _logger = logger;
+    private readonly ILogger<TMessage> _logger = logger;
     private readonly IUser _user = user;
     private readonly IIdentityService _identityService = identityService;
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
     {
-        _timer.Start();
+        var timer = Stopwatch.StartNew();
 
-        var response = await next(cancellationToken);
+        var response = await next(message, cancellationToken);
 
-        _timer.Stop();
+        timer.Stop();
 
-        var elapsedMilliseconds = _timer.ElapsedMilliseconds;
+        var elapsedMilliseconds = timer.ElapsedMilliseconds;
 
         if (elapsedMilliseconds > 500)
         {
-            var requestName = typeof(TRequest).Name;
+            var requestName = typeof(TMessage).Name;
             var userId = _user.Id ?? string.Empty;
             var userName = string.Empty;
 
@@ -37,7 +36,7 @@ public class PerformanceBehaviour<TRequest, TResponse>(
             }
 
             _logger.LogWarning("CleanApi Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
-                requestName, elapsedMilliseconds, userId, userName, request);
+                requestName, elapsedMilliseconds, userId, userName, message);
         }
 
         return response;

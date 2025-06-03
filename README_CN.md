@@ -142,7 +142,7 @@ dotnet new uninstall .
 - 使用 [Postgres](https://github.com/postgres/postgres) 进行数据存储
 - 使用 [EFCore](https://github.com/dotnet/efcore) 进行数据访问，采用[代码优先模式](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations)
 - 使用 [Mapster](https://github.com/MapsterMapper/Mapster) 进行对象映射
-- 使用 [MediatR](https://github.com/jbogard/MediatR) 实现中介者模式
+- 使用 [Mediator](https://github.com/martinothamar/Mediator) 实现中介者模式
 - 使用 [FluentValidation](https://github.com/FluentValidation/FluentValidation) 进行验证
 - 使用 [NSwag](https://github.com/RicoSuter/NSwag) 实现 OpenApi
 - 使用 [Serilog](https://github.com/serilog/serilog) 进行日志记录

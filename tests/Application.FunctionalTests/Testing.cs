@@ -1,7 +1,7 @@
 using CleanApi.Domain.Constants;
 using CleanApi.Infrastructure.Data;
 using CleanApi.Infrastructure.Identity;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,20 +27,29 @@ public partial class Testing
         _scopeFactory = _factory.Services.GetRequiredService<IServiceScopeFactory>();
     }
 
-    public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
+    public static async Task<TResponse> SendAsync<TResponse>(IQuery<TResponse> request)
     {
         using var scope = _scopeFactory.CreateScope();
 
-        var mediator = scope.ServiceProvider.GetRequiredService<ISender>();
+        var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
 
         return await mediator.Send(request);
     }
 
-    public static async Task SendAsync(IBaseRequest request)
+    public static async Task<TResponse> SendAsync<TResponse>(ICommand<TResponse> request)
     {
         using var scope = _scopeFactory.CreateScope();
 
-        var mediator = scope.ServiceProvider.GetRequiredService<ISender>();
+        var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+
+        return await mediator.Send(request);
+    }
+
+    public static async Task SendAsync(ICommand request)
+    {
+        using var scope = _scopeFactory.CreateScope();
+
+        var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
 
         await mediator.Send(request);
     }

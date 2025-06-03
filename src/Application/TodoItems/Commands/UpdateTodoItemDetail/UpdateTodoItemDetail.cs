@@ -3,7 +3,7 @@ using CleanApi.Domain.Enums;
 
 namespace CleanApi.Application.TodoItems.Commands.UpdateTodoItemDetail;
 
-public record UpdateTodoItemDetailCommand : IRequest
+public record UpdateTodoItemDetailCommand : ICommand
 {
     public string Id { get; init; } = default!;
 
@@ -16,11 +16,11 @@ public record UpdateTodoItemDetailCommand : IRequest
 
 public class UpdateTodoItemDetailCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<UpdateTodoItemDetailCommand>
+    : ICommandHandler<UpdateTodoItemDetailCommand>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task Handle(UpdateTodoItemDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<Unit> Handle(UpdateTodoItemDetailCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.TodoItems
             .FindAsync([request.Id], cancellationToken);
@@ -33,5 +33,7 @@ public class UpdateTodoItemDetailCommandHandler(
 
         _context.TodoItems.Update(entity);
         await _context.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }

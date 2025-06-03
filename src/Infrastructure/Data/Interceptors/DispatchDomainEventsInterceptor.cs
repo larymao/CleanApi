@@ -1,4 +1,4 @@
-using MediatR;
+using Mediator;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace CleanApi.Infrastructure.Data.Interceptors;

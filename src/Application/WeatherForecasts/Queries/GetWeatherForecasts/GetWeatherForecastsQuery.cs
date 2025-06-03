@@ -1,15 +1,15 @@
 namespace CleanApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
-public record GetWeatherForecastsQuery : IRequest<IEnumerable<WeatherForecast>>;
+public record GetWeatherForecastsQuery : IQuery<IEnumerable<WeatherForecast>>;
 
-public class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>
+public class GetWeatherForecastsQueryHandler : IQueryHandler<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>
 {
     private static readonly string[] Summaries =
     [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 
-    public Task<IEnumerable<WeatherForecast>> Handle(GetWeatherForecastsQuery request, CancellationToken cancellationToken)
+    public ValueTask<IEnumerable<WeatherForecast>> Handle(GetWeatherForecastsQuery request, CancellationToken cancellationToken)
     {
         var rng = new Random();
 
@@ -23,6 +23,6 @@ public class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecas
             Summary = Summaries[rng.Next(Summaries.Length)]
         });
 
-        return Task.FromResult(result);
+        return ValueTask.FromResult(result);
     }
 }

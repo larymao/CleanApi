@@ -137,7 +137,7 @@ There are plenty of handy implementations of features throughout this solution, 
 - Data Storage using [Postgres](https://github.com/postgres/postgres)
 - Data accessing using [EFCore](https://github.com/dotnet/efcore) with [Code First Mode](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations)
 - Object Mapping using [Mapster](https://github.com/MapsterMapper/Mapster)
-- Mediator Pattern using [MediatR](https://github.com/jbogard/MediatR)
+- Mediator Pattern using [Mediator](https://github.com/martinothamar/Mediator)
 - Validation using [FluentValidation](https://github.com/FluentValidation/FluentValidation)
 - OpenApi using [NSwag](https://github.com/RicoSuter/NSwag)
 - Logging using [Serilog](https://github.com/serilog/serilog)

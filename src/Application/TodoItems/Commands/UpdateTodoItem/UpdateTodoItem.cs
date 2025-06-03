@@ -2,7 +2,7 @@ using CleanApi.Application.Common.Interfaces;
 
 namespace CleanApi.Application.TodoItems.Commands.UpdateTodoItem;
 
-public record UpdateTodoItemCommand : IRequest
+public record UpdateTodoItemCommand : ICommand
 {
     public string Id { get; init; } = default!;
 
@@ -13,11 +13,11 @@ public record UpdateTodoItemCommand : IRequest
 
 public class UpdateTodoItemCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<UpdateTodoItemCommand>
+    : ICommandHandler<UpdateTodoItemCommand>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task Handle(UpdateTodoItemCommand request, CancellationToken cancellationToken)
+    public async ValueTask<Unit> Handle(UpdateTodoItemCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.TodoItems
             .FindAsync([request.Id], cancellationToken);
@@ -29,5 +29,7 @@ public class UpdateTodoItemCommandHandler(
 
         _context.TodoItems.Update(entity);
         await _context.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }

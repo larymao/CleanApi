@@ -2,15 +2,15 @@ using CleanApi.Application.Common.Interfaces;
 
 namespace CleanApi.Application.TodoLists.Commands.DeleteTodoList;
 
-public record DeleteTodoListCommand(string Id) : IRequest;
+public record DeleteTodoListCommand(string Id) : ICommand;
 
 public class DeleteTodoListCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<DeleteTodoListCommand>
+    : ICommandHandler<DeleteTodoListCommand>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task Handle(DeleteTodoListCommand request, CancellationToken cancellationToken)
+    public async ValueTask<Unit> Handle(DeleteTodoListCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.TodoLists
             .Where(l => l.Id == request.Id)
@@ -21,5 +21,7 @@ public class DeleteTodoListCommandHandler(
         _context.TodoLists.Remove(entity);
 
         await _context.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }

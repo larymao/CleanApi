@@ -5,17 +5,17 @@ using CleanApi.Application.Common.Security;
 
 namespace CleanApi.Application.Common.Behaviours;
 
-public class AuthorizationBehaviour<TRequest, TResponse>(
+public class AuthorizationBehaviour<TMessage, TResponse>(
     IUser user,
     IIdentityService identityService)
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+    : IPipelineBehavior<TMessage, TResponse> where TMessage : IMessage
 {
     private readonly IUser _user = user;
     private readonly IIdentityService _identityService = identityService;
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
     {
-        var authorizeAttributes = request.GetType().GetCustomAttributes<AuthorizeAttribute>();
+        var authorizeAttributes = message.GetType().GetCustomAttributes<AuthorizeAttribute>();
 
         if (authorizeAttributes.Any())
         {
@@ -69,6 +69,6 @@ public class AuthorizationBehaviour<TRequest, TResponse>(
         }
 
         // User is authorized / authorization not required
-        return await next(cancellationToken);
+        return await next(message, cancellationToken);
     }
 }

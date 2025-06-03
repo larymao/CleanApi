@@ -3,18 +3,18 @@ using CleanApi.Domain.Entities;
 
 namespace CleanApi.Application.TodoLists.Commands.CreateTodoList;
 
-public record CreateTodoListCommand : IRequest<string>
+public record CreateTodoListCommand : ICommand<string>
 {
     public string? Title { get; init; }
 }
 
 public class CreateTodoListCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<CreateTodoListCommand, string>
+    : ICommandHandler<CreateTodoListCommand, string>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task<string> Handle(CreateTodoListCommand request, CancellationToken cancellationToken)
+    public async ValueTask<string> Handle(CreateTodoListCommand request, CancellationToken cancellationToken)
     {
         var entity = new TodoList
         {

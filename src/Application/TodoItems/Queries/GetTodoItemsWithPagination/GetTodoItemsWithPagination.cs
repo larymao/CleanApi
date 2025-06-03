@@ -4,7 +4,7 @@ using CleanApi.Application.Common.Models;
 
 namespace CleanApi.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
-public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
+public record GetTodoItemsWithPaginationQuery : IQuery<PaginatedList<TodoItemBriefDto>>
 {
     public string ListId { get; init; } = default!;
     public int PageNumber { get; init; } = 1;
@@ -13,11 +13,11 @@ public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemB
 
 public class GetTodoItemsWithPaginationQueryHandler(
     IApplicationDbContext context)
-    : IRequestHandler<GetTodoItemsWithPaginationQuery, PaginatedList<TodoItemBriefDto>>
+    : IQueryHandler<GetTodoItemsWithPaginationQuery, PaginatedList<TodoItemBriefDto>>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task<PaginatedList<TodoItemBriefDto>> Handle(GetTodoItemsWithPaginationQuery request, CancellationToken cancellationToken)
+    public async ValueTask<PaginatedList<TodoItemBriefDto>> Handle(GetTodoItemsWithPaginationQuery request, CancellationToken cancellationToken)
     {
         return await _context.TodoItems
             .Where(x => x.ListId == request.ListId)

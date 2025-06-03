@@ -6,18 +6,20 @@ namespace CleanApi.Application.TodoLists.Commands.PurgeTodoLists;
 
 [Authorize(Roles = Roles.Administrator)]
 [Authorize(Policy = Policies.CanPurge)]
-public record PurgeTodoListsCommand : IRequest;
+public record PurgeTodoListsCommand : ICommand;
 
 public class PurgeTodoListsCommandHandler(
     IApplicationDbContext context)
-    : IRequestHandler<PurgeTodoListsCommand>
+    : ICommandHandler<PurgeTodoListsCommand>
 {
     private readonly IApplicationDbContext _context = context;
 
-    public async Task Handle(PurgeTodoListsCommand request, CancellationToken cancellationToken)
+    public async ValueTask<Unit> Handle(PurgeTodoListsCommand request, CancellationToken cancellationToken)
     {
         _context.TodoLists.RemoveRange(_context.TodoLists);
 
         await _context.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }
