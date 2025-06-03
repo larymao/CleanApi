@@ -113,6 +113,19 @@ When you need to make changes to your database schema, you can create a new migr
 make migration name=YourMigrationName
 ```
 
+### AI Assistant Integration
+
+This template comes with pre-configured AI assistant instructions optimized for  **Cursor** and **GitHub Copilot**. The default configuration sets **English** as the primary communication language and follows .NET development best practices.
+
+To change the communication language to **Chinese**, locate the AI config file and modify the `Code and Communication Standards` section:
+
+```txt
+## Code and Communication Standards
+- Code Writing Standards: All code elements must strictly use English to ensure international compatibility and maintainability of the code.
+- Communication Language Requirements: All communication with users must be in Chinese, including explanations, suggestions, problem analysis, and technical discussions.
+- Mixed Content Handling: When code snippets need to be referenced or displayed within Chinese responses, the code itself should still follow English writing standards, while code explanations and contextual descriptions should be in Chinese.
+```
+
 ## Uninstallation
 
 To uninstall the template run the following command:

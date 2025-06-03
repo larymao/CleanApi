@@ -118,6 +118,19 @@ make migration name=YourMigrationName
 make migration name=YourMigrationName
 ```
 
+### AI 助手集成
+
+本模板预置了针对 **Cursor** 和 **GitHub Copilot** 优化的指令规则。默认配置将**英语**设置为交流语言，并遵循 .NET 开发最佳实践。
+
+若要将 AI 交流语言更改为**中文**，找到 AI 规则配置文件并修改 `Code and Communication Standards`模块：
+
+```txt
+## Code and Communication Standards
+- Code Writing Standards: All code elements must strictly use English to ensure international compatibility and maintainability of the code.
+- Communication Language Requirements: All communication with users must be in Chinese, including explanations, suggestions, problem analysis, and technical discussions.
+- Mixed Content Handling: When code snippets need to be referenced or displayed within Chinese responses, the code itself should still follow English writing standards, while code explanations and contextual descriptions should be in Chinese.
+```
+
 ## 卸载
 
 要卸载模板，请运行以下命令：

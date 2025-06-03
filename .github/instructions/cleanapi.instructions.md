@@ -77,5 +77,4 @@ Follow the official Microsoft documentation and ASP.NET Core guides for best pra
 
 ## Code and Communication Standards
 - Code Writing Standards: All code elements must strictly use English to ensure international compatibility and maintainability of the code.
-- Communication Language Requirements: All communication with users must be in Chinese, including explanations, suggestions, problem analysis, and technical discussions.
-- Mixed Content Handling: When code snippets need to be referenced or displayed within Chinese responses, the code itself should still follow English writing standards, while code explanations and contextual descriptions should be in Chinese.
+- Communication Language Requirements: All communication with users must be in English, including explanations, suggestions, problem analysis, and technical discussions.
