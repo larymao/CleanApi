@@ -141,4 +141,4 @@ There are plenty of handy implementations of features throughout this solution, 
 - Validation using [FluentValidation](https://github.com/FluentValidation/FluentValidation)
 - OpenApi using [NSwag](https://github.com/RicoSuter/NSwag)
 - Logging using [Serilog](https://github.com/serilog/serilog)
-- Testing using [NUnit](https://github.com/nunit/nunit), [Fluent Assertions](https://github.com/fluentassertions/fluentassertions), [Moq](https://github.com/devlooped/moq) & [Respawn](https://github.com/jbogard/Respawn)
+- Testing using [NUnit](https://github.com/nunit/nunit), [Shouldly](https://github.com/shouldly/shouldly), [Moq](https://github.com/devlooped/moq) & [Respawn](https://github.com/jbogard/Respawn)

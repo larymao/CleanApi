@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.Common.Exceptions;
+using CleanApi.Application.Common.Exceptions;
 using CleanApi.Application.Common.Security;
 using CleanApi.Application.TodoLists.Commands.CreateTodoList;
 using CleanApi.Application.TodoLists.Commands.PurgeTodoLists;
@@ -15,11 +15,11 @@ public class PurgeTodoListsTests : BaseTestFixture
     {
         var command = new PurgeTodoListsCommand();
 
-        command.GetType().Should().BeDecoratedWith<AuthorizeAttribute>();
+        command.GetType().ShouldBeDecoratedWith<AuthorizeAttribute>();
 
         var action = () => SendAsync(command);
 
-        await action.Should().ThrowAsync<UnauthorizedAccessException>();
+        await action.ShouldThrowAsync<UnauthorizedAccessException>();
     }
 
     [Test]
@@ -31,7 +31,7 @@ public class PurgeTodoListsTests : BaseTestFixture
 
         var action = () => SendAsync(command);
 
-        await action.Should().ThrowAsync<ForbiddenAccessException>();
+        await action.ShouldThrowAsync<ForbiddenAccessException>();
     }
 
     [Test]
@@ -43,7 +43,7 @@ public class PurgeTodoListsTests : BaseTestFixture
 
         var action = () => SendAsync(command);
 
-        await action.Should().NotThrowAsync<ForbiddenAccessException>();
+        await action.ShouldNotThrowAsync();
     }
 
     [Test]
@@ -70,6 +70,6 @@ public class PurgeTodoListsTests : BaseTestFixture
 
         var count = await CountAsync<TodoList>();
 
-        count.Should().Be(0);
+        count.ShouldBe(0);
     }
 }

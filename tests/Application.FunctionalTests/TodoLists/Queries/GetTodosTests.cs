@@ -1,4 +1,4 @@
-﻿using CleanApi.Application.TodoLists.Queries.GetTodos;
+using CleanApi.Application.TodoLists.Queries.GetTodos;
 using CleanApi.Domain.Entities;
 using CleanApi.Domain.ValueObjects;
 
@@ -17,7 +17,7 @@ public class GetTodosTests : BaseTestFixture
 
         var result = await SendAsync(query);
 
-        result.PriorityLevels.Should().NotBeEmpty();
+        result.PriorityLevels.ShouldNotBeEmpty();
     }
 
     [Test]
@@ -45,8 +45,8 @@ public class GetTodosTests : BaseTestFixture
 
         var result = await SendAsync(query);
 
-        result.Lists.Should().HaveCount(1);
-        result.Lists.First().Items.Should().HaveCount(7);
+        result.Lists.Count.ShouldBe(1);
+        result.Lists.First().Items.Count.ShouldBe(7);
     }
 
     [Test]
@@ -55,7 +55,7 @@ public class GetTodosTests : BaseTestFixture
         var query = new GetTodosQuery();
 
         var action = () => SendAsync(query);
-        
-        await action.Should().ThrowAsync<UnauthorizedAccessException>();
+
+        await action.ShouldThrowAsync<UnauthorizedAccessException>();
     }
 }

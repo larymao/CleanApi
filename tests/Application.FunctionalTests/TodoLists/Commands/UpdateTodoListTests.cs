@@ -13,7 +13,7 @@ public class UpdateTodoListTests : BaseTestFixture
     public async Task ShouldRequireValidTodoListId()
     {
         var command = new UpdateTodoListCommand { Id = "ffffffff-ffff-ffff-ffff-ffffffffffff", Title = "New Title" };
-        await FluentActions.Invoking(() => SendAsync(command)).Should().ThrowAsync<NotFoundException>();
+        await Should.ThrowAsync<NotFoundException>(() => SendAsync(command));
     }
 
     [Test]
@@ -35,10 +35,10 @@ public class UpdateTodoListTests : BaseTestFixture
             Title = "Other List"
         };
 
-        (await FluentActions.Invoking(() =>
-            SendAsync(command))
-                .Should().ThrowAsync<ValidationException>().Where(ex => ex.Errors.ContainsKey("Title")))
-                .And.Errors["Title"].Should().Contain("'Title' must be unique.");
+        (await Should.ThrowAsync<ValidationException>(() => SendAsync(command)))
+            .Errors.Keys.ShouldContain("Title");
+        (await Should.ThrowAsync<ValidationException>(() => SendAsync(command)))
+            .Errors["Title"].ShouldContain("'Title' must be unique.");
     }
 
     [Test]
@@ -61,10 +61,10 @@ public class UpdateTodoListTests : BaseTestFixture
 
         var list = await FindAsync<TodoList>(listId);
 
-        list.Should().NotBeNull();
-        list!.Title.Should().Be(command.Title);
-        list.LastModifiedBy.Should().NotBeNull();
-        list.LastModifiedBy.Should().Be(userId);
-        list.LastModified.Should().BeCloseTo(DateTime.Now, TimeSpan.FromMilliseconds(10000));
+        list.ShouldNotBeNull();
+        list!.Title.ShouldBe(command.Title);
+        list.LastModifiedBy.ShouldNotBeNull();
+        list.LastModifiedBy.ShouldBe(userId);
+        list.LastModified.ShouldBeInRange(DateTimeOffset.Now.AddSeconds(-1), DateTimeOffset.Now.AddSeconds(1));
     }
 }

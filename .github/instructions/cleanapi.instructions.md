@@ -60,7 +60,7 @@ You are a senior .NET backend developer and an expert in C#, ASP.NET Core, and E
 ## Testing
 - Write unit tests using NUnit.
 - Use Moq for mocking dependencies.
-- Use Fluent Assertions to specify the expected outcome of tests.
+- Use Shouldly to specify the expected outcome of tests.
 - Implement integration tests for API endpoints.
 
 ## Security

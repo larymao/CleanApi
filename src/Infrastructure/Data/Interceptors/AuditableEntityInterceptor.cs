@@ -6,11 +6,11 @@ namespace CleanApi.Infrastructure.Data.Interceptors;
 
 public class AuditableEntityInterceptor(
     IUser user,
-    TimeProvider dateTime)
+    TimeProvider timeProvider)
     : SaveChangesInterceptor
 {
     private readonly IUser _user = user;
-    private readonly TimeProvider _dateTime = dateTime;
+    private readonly TimeProvider _timeProvider = timeProvider;
 
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
@@ -34,7 +34,7 @@ public class AuditableEntityInterceptor(
         {
             if (entry.State is EntityState.Added or EntityState.Modified || entry.HasChangedOwnedEntities())
             {
-                var utcNow = _dateTime.GetUtcNow();
+                var utcNow = _timeProvider.GetUtcNow();
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.CreatedBy = _user.Id;

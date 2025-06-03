@@ -1,7 +1,7 @@
 using CleanApi.Application.Common.Exceptions;
-using FluentAssertions;
 using FluentValidation.Results;
 using NUnit.Framework;
+using Shouldly;
 
 namespace CleanApi.Application.UnitTests.Common.Exceptions;
 
@@ -12,52 +12,52 @@ public class ValidationExceptionTests
     {
         var actual = new ValidationException().Errors;
 
-        actual.Keys.Should().BeEquivalentTo([]);
+        actual.Keys.ShouldBeEmpty();
     }
 
     [Test]
     public void SingleValidationFailureCreatesASingleElementErrorDictionary()
     {
         var failures = new List<ValidationFailure>
-            {
-                new("Age", "must be over 18"),
-            };
+        {
+            new("Age", "must be over 18"),
+        };
 
         var actual = new ValidationException(failures).Errors;
 
-        actual.Keys.Should().BeEquivalentTo(["Age"]);
-        actual["Age"].Should().BeEquivalentTo(["must be over 18"]);
+        actual.Keys.ShouldBe(["Age"]);
+        actual["Age"].ShouldBe(["must be over 18"]);
     }
 
     [Test]
     public void MulitpleValidationFailureForMultiplePropertiesCreatesAMultipleElementErrorDictionaryEachWithMultipleValues()
     {
         var failures = new List<ValidationFailure>
-            {
-                new("Age", "must be 18 or older"),
-                new("Age", "must be 25 or younger"),
-                new("Password", "must contain at least 8 characters"),
-                new("Password", "must contain a digit"),
-                new("Password", "must contain upper case letter"),
-                new("Password", "must contain lower case letter"),
-            };
+        {
+            new("Age", "must be 18 or older"),
+            new("Age", "must be 25 or younger"),
+            new("Password", "must contain at least 8 characters"),
+            new("Password", "must contain a digit"),
+            new("Password", "must contain upper case letter"),
+            new("Password", "must contain lower case letter"),
+        };
 
         var actual = new ValidationException(failures).Errors;
 
-        actual.Keys.Should().BeEquivalentTo(["Password", "Age"]);
+        actual.Keys.ShouldBe(["Password", "Age"], ignoreOrder: true);
 
-        actual["Age"].Should().BeEquivalentTo(
+        actual["Age"].ShouldBe(
         [
-                "must be 25 or younger",
-                "must be 18 or older",
-        ]);
+            "must be 25 or younger",
+            "must be 18 or older",
+        ], ignoreOrder: true);
 
-        actual["Password"].Should().BeEquivalentTo(
+        actual["Password"].ShouldBe(
         [
-                "must contain lower case letter",
-                "must contain upper case letter",
-                "must contain at least 8 characters",
-                "must contain a digit",
-        ]);
+            "must contain lower case letter",
+            "must contain upper case letter",
+            "must contain at least 8 characters",
+            "must contain a digit",
+        ], ignoreOrder: true);
     }
 }

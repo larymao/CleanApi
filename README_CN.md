@@ -146,4 +146,4 @@ dotnet new uninstall .
 - 使用 [FluentValidation](https://github.com/FluentValidation/FluentValidation) 进行验证
 - 使用 [NSwag](https://github.com/RicoSuter/NSwag) 实现 OpenApi
 - 使用 [Serilog](https://github.com/serilog/serilog) 进行日志记录
-- 使用 [NUnit](https://github.com/nunit/nunit)、[Fluent Assertions](https://github.com/fluentassertions/fluentassertions)、[Moq](https://github.com/devlooped/moq) 和 [Respawn](https://github.com/jbogard/Respawn) 进行测试
+- 使用 [NUnit](https://github.com/nunit/nunit)、[Shouldly](https://github.com/shouldly/shouldly)、[Moq](https://github.com/devlooped/moq) 和 [Respawn](https://github.com/jbogard/Respawn) 进行测试
