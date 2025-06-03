@@ -1,47 +1,47 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <PackageType>Template</PackageType>
-        <PackageVersion>0.2.7</PackageVersion>
-        <PackageId>CleanApi.Solution.Template</PackageId>
-        <PackageTags>clean-api;clean-architechture;minimal-api;template;dotnet</PackageTags>
-        <IsPackable>true</IsPackable>
-        <IncludeSource>false</IncludeSource>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <EnableDefaultItems>false</EnableDefaultItems>
-        <IsShipping>true</IsShipping>
-        <IsShippingPackage>true</IsShippingPackage>
-        <Title>Clean Api Solution Template</Title>
-        <Authors>Lary Mao</Authors>
-        <Description>
-            A .NET 9 template for an API using a streamlined verison of Clean Architecture alongside .NET's Minimal APIs.
-        </Description>
-        <TargetFramework>net9.0</TargetFramework>
-        <NoWarn>$(NoWarn);CS2008</NoWarn>
-        <IncludeContentInPack>true</IncludeContentInPack>
-        <IncludeBuildOutput>false</IncludeBuildOutput>
-        <ContentTargetFolders>content</ContentTargetFolders>
-        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageIcon>icon.png</PackageIcon>
-        <PackageProjectUrl>https://github.com/larymao/CleanApi</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/larymao/CleanApi.git</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <RepositoryBranch>main</RepositoryBranch>
-        <PackageReleaseNotes>
-✨ add cursor rule
-✨ add copilot instruction
-✨ add makefile
-📦 update packages
-        </PackageReleaseNotes>
-    </PropertyGroup>
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>0.2.8</PackageVersion>
+    <PackageId>CleanApi.Solution.Template</PackageId>
+    <PackageTags>clean-api;clean-architechture;minimal-api;template;dotnet</PackageTags>
+    <IsPackable>true</IsPackable>
+    <IncludeSource>false</IncludeSource>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <IsShipping>true</IsShipping>
+    <IsShippingPackage>true</IsShippingPackage>
+    <Title>Clean Api Solution Template</Title>
+    <Authors>Lary Mao</Authors>
+    <Description>
+      A .NET 9 template for an API using a streamlined verison of Clean Architecture alongside .NET's Minimal APIs.
+    </Description>
+    <TargetFramework>net9.0</TargetFramework>
+    <NoWarn>$(NoWarn);CS2008</NoWarn>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/larymao/CleanApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/larymao/CleanApi.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryBranch>main</RepositoryBranch>
+    <PackageReleaseNotes>
+♻️ replace AutoMapper with Mapster
+♻️ replace MediatR with Mediator
+♻️ replace FluentAssertions with Shouldly
+🔧 set 'English' as the primary communication language of AI
+    </PackageReleaseNotes>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <None Include=".template.config\icon.png" Pack="true" PackagePath="\" />
-        <None Include="README.md" Pack="true" PackagePath="\" />
-        <Content Include="**" Exclude="**\bin\**;**\obj\**;**\logs\**;**\TestResults\**;.vs\**;.vscode\**;.git\**;.github\workflows\**;**\*.filelist;**\*.user;**\*.lock.json;**\*.nupkg;CleanApi.csproj;LICENSE;README.md;README_CN.md" />
-        <Compile Remove="**\*" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include=".template.config\icon.png" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <Content Include="**" Exclude="**\bin\**;**\obj\**;**\logs\**;**\TestResults\**;.vs\**;.vscode\**;.git\**;.github\workflows\**;**\*.filelist;**\*.user;**\*.lock.json;**\*.nupkg;CleanApi.csproj;LICENSE;README.md;README_CN.md" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
 
 </Project>
