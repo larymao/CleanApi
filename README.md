@@ -4,6 +4,7 @@
 [![codecov](https://codecov.io/gh/larymao/CleanApi/graph/badge.svg?token=6EEWCTPJK3)](https://codecov.io/gh/larymao/CleanApi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/larymao/cleanapi/blob/master/LICENSE) 
 [![Nuget](https://img.shields.io/nuget/v/CleanApi.Solution.Template?color=0b7cbd)](https://www.nuget.org/packages/CleanApi.Solution.Template)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/larymao/CleanApi)
 
 [🌟 English](https://github.com/larymao/CleanApi/blob/main/README.md) | [🌏 中文](https://github.com/larymao/CleanApi/blob/main/README_CN.md)
 
