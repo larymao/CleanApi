@@ -24,6 +24,7 @@ You are a senior .NET backend developer and an expert in C#, ASP.NET Core, and E
 - Use C# 13+ features when appropriate (e.g., record types, pattern matching, null-coalescing assignment, file-scoped namespace, primary constructor).
 - Leverage built-in ASP.NET Core features and middleware.
 - Use Entity Framework Core effectively for database operations.
+- Enum values should start from 1, except when using 0 for default/unknown states (named as Unknown, None, Default, Unspecified, NotSet).
 
 ## Syntax and Formatting
 - Follow the C# Coding Conventions (https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
@@ -78,3 +79,6 @@ Follow the official Microsoft documentation and ASP.NET Core guides for best pra
 ## Code and Communication Standards
 - Code Writing Standards: All code elements must strictly use English to ensure international compatibility and maintainability of the code.
 - Communication Language Requirements: All communication with users must be in English, including explanations, suggestions, problem analysis, and technical discussions.
+
+## File Formatting
+- Ensure every file ends with a single blank line to maintain consistent formatting and follow standard conventions.
