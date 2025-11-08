@@ -8,7 +8,7 @@ public class ValidationBehaviour<TMessage, TResponse>(
 {
     private readonly IEnumerable<IValidator<TMessage>> _validators = validators;
 
-    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
+    public async ValueTask<TResponse> Handle(TMessage message, MessageHandlerDelegate<TMessage, TResponse> next, CancellationToken cancellationToken)
     {
         if (_validators.Any())
         {

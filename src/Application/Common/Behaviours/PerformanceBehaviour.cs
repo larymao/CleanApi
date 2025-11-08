@@ -14,7 +14,7 @@ public class PerformanceBehaviour<TMessage, TResponse>(
     private readonly IUser _user = user;
     private readonly IIdentityService _identityService = identityService;
 
-    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
+    public async ValueTask<TResponse> Handle(TMessage message, MessageHandlerDelegate<TMessage, TResponse> next, CancellationToken cancellationToken)
     {
         var timer = Stopwatch.StartNew();
 

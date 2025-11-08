@@ -8,7 +8,7 @@ public class UnhandledExceptionBehaviour<TMessage, TResponse>(
 {
     private readonly ILogger<TMessage> _logger = logger;
 
-    public async ValueTask<TResponse> Handle(TMessage message, CancellationToken cancellationToken, MessageHandlerDelegate<TMessage, TResponse> next)
+    public async ValueTask<TResponse> Handle(TMessage message, MessageHandlerDelegate<TMessage, TResponse> next, CancellationToken cancellationToken)
     {
         try
         {

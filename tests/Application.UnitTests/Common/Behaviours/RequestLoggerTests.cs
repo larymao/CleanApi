@@ -32,7 +32,7 @@ public class RequestLoggerTests
         var command = new CreateTodoItemCommand { ListId = Guid.NewGuid().ToString(), Title = "title" };
         var next = new MessageHandlerDelegate<CreateTodoItemCommand, string>((cmd, ct) => ValueTask.FromResult("ffffffff-ffff-ffff-ffff-ffffffffffff"));
 
-        await requestLogger.Handle(command, CancellationToken.None, next);
+        await requestLogger.Handle(command, next, CancellationToken.None);
 
         _identityService.Verify(i => i.GetUserNameAsync(It.IsAny<string>()), Times.Once);
     }
@@ -45,7 +45,7 @@ public class RequestLoggerTests
         var command = new CreateTodoItemCommand { ListId = Guid.NewGuid().ToString(), Title = "title" };
         var next = new MessageHandlerDelegate<CreateTodoItemCommand, string>((cmd, ct) => ValueTask.FromResult("ffffffff-ffff-ffff-ffff-ffffffffffff"));
 
-        await requestLogger.Handle(command, CancellationToken.None, next);
+        await requestLogger.Handle(command, next, CancellationToken.None);
 
         _identityService.Verify(i => i.GetUserNameAsync(It.IsAny<string>()), Times.Never);
     }
