@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>0.2.8</PackageVersion>
+    <PackageVersion>0.2.9</PackageVersion>
     <PackageId>CleanApi.Solution.Template</PackageId>
     <PackageTags>clean-api;clean-architechture;minimal-api;template;dotnet</PackageTags>
     <IsPackable>true</IsPackable>
@@ -30,10 +30,8 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryBranch>main</RepositoryBranch>
     <PackageReleaseNotes>
-♻️ replace AutoMapper with Mapster
-♻️ replace MediatR with Mediator
-♻️ replace FluentAssertions with Shouldly
-🔧 set 'English' as the primary communication language of AI
+✨ Target to .NET 10
+♻️ remove FluentValidation.AspNetCore
     </PackageReleaseNotes>
   </PropertyGroup>
 

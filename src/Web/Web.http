@@ -1,9 +1,9 @@
-﻿# For more info on HTTP files go to https://aka.ms/vs/httpfile
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
 @Web_HostAddress = https://localhost:5001
 
 @Email=administrator@localhost
 @Password=Administrator1!
-@BearerToken=<YourToken>
+@BearerToken=CfDJ8GyKjNuWOjhGmvyF03ml2nUDdDy1EYop9ew4OTugksCWW8jPZNg440jR6VwWbhcXb8WP54nH3aVfiiGlJEE9r6-EcMHNRr7ZLMmhuW4pqa9zuzcC3F05GiauDOHxrfsM3UF2iYDwPG348-yBdzGjWfw4bbq7S4yUNxAeeER3AwSZS5SGFhNU_AseWuepAwA3GOqU8373BQ9zZHcb6-Br_qllyrDip7EIjJ-sClSqaPIqAptWgUehIFrI2Yv5Up9kSUWW5ebljrm4xn606sXJObT9VBQEroLpxof_6B2McJyyQSCfrahKD_CspV-3th7kP6lqxOPK9kM6HuKVzAKTtfXqbAVmK7M6Km3-CzhRP_tkdFwgpuvcwi7d6hiAel9hZ7ghe6WQ1aVh0WutYTdmk3S-2XtkuNSkv6iCxF6TBemZrmNIvagKgjmfGXO3yAmf2MVuv8tkLmQCJxmK40swSdcDrANTLeYIPGLPEEXj8XGoud0OYZKOzdXu5gMLJft7GgGQ_Luq9TR0QZrPVN3ZYSzTR_7PbZ0dg8isAf5opOFrJg5wMlns0fhY2evK-kLfsdSNwcJeyutDV_JqVX2rlhk9Il4WoadERCJnLAQprkYQKUyHOE20fqBXVFkC74wnLC6joYMfqYnDVSZrfnOZF-h1VqAkOzxl0gE2dYbKBweTybWqG7tiNRcuz9smmfFF4GgWDpVukf8vYVyQcWYuhyzBTP1Of2Btz99T1BjmssaK3nR4_xYQXm8CPWqUJXhafoEPLz09TtPlxhS98qJB9qDYTUn4jKV42dJXofOBB7gtFBtttcb2Sqo2XBfdibzNsg
 
 # POST Users Register
 POST {{Web_HostAddress}}/api/Users/Register
@@ -55,7 +55,6 @@ POST {{Web_HostAddress}}/api/TodoLists
 Authorization: Bearer {{BearerToken}}
 Content-Type: application/json
 
-// CreateTodoListCommand
 {
   "Title": "Backlog"
 }
@@ -63,20 +62,19 @@ Content-Type: application/json
 ###
 
 # PUT TodoLists
-PUT {{Web_HostAddress}}/api/TodoLists/1
+PUT {{Web_HostAddress}}/api/TodoLists/00000000-0000-0000-0000-000000000001
 Authorization: Bearer {{BearerToken}}
 Content-Type: application/json
 
-// UpdateTodoListCommand
 {
-  "Id": 1,
+  "Id": "00000000-0000-0000-0000-000000000001",
   "Title": "Product Backlog"
 }
 
 ###
 
 # DELETE TodoLists
-DELETE {{Web_HostAddress}}/api/TodoLists/1
+DELETE {{Web_HostAddress}}/api/TodoLists/00000000-0000-0000-0000-000000000001
 Authorization: Bearer {{BearerToken}}
 
 ###
@@ -84,7 +82,7 @@ Authorization: Bearer {{BearerToken}}
 # GET TodoItems
 @PageNumber = 1
 @PageSize = 10
-GET {{Web_HostAddress}}/api/TodoItems?ListId=1&PageNumber={{PageNumber}}&PageSize={{PageSize}}
+GET {{Web_HostAddress}}/api/TodoItems?ListId=00000000-0000-0000-0000-000000000001&PageNumber={{PageNumber}}&PageSize={{PageSize}}
 
 Authorization: Bearer {{BearerToken}}
 
@@ -95,23 +93,21 @@ POST {{Web_HostAddress}}/api/TodoItems
 Authorization: Bearer {{BearerToken}}
 Content-Type: application/json
 
-// CreateTodoItemCommand
 {
-  "ListId": 1,
+  "ListId": "00000000-0000-0000-0000-000000000001",
   "Title": "Eat a burrito 🌯"
 }
 
 ###
 
 #PUT TodoItems UpdateItemDetails
-PUT {{Web_HostAddress}}/api/TodoItems/UpdateItemDetails?Id=1
+PUT {{Web_HostAddress}}/api/TodoItems/UpdateItemDetails?Id=00000000-0000-0000-0000-000000000001
 Authorization: Bearer {{BearerToken}}
 Content-Type: application/json
 
-// UpdateTodoItemDetailCommand
 {
-  "Id": 1,
-  "ListId": 1,
+  "Id": "00000000-0000-0000-0000-000000000001",
+  "ListId": 00000000-0000-0000-0000-000000000001,
   "Priority": 3,
   "Note": "This is a good idea!"
 }
@@ -119,13 +115,12 @@ Content-Type: application/json
 ###
 
 # PUT TodoItems
-PUT {{Web_HostAddress}}/api/TodoItems/1
+PUT {{Web_HostAddress}}/api/TodoItems/00000000-0000-0000-0000-000000000001
 Authorization: Bearer {{BearerToken}}
 Content-Type: application/json
 
-// UpdateTodoItemCommand
 {
-  "Id": 1,
+  "Id": "00000000-0000-0000-0000-000000000001",
   "Title": "Eat a yummy burrito 🌯",
   "Done": true
 }
@@ -133,7 +128,7 @@ Content-Type: application/json
 ###
 
 # DELETE TodoItem
-DELETE {{Web_HostAddress}}/api/TodoItems/1
+DELETE {{Web_HostAddress}}/api/TodoItems/00000000-0000-0000-0000-000000000001
 Authorization: Bearer {{BearerToken}}
 
 ###
