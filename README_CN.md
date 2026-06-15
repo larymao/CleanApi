@@ -12,7 +12,7 @@
 
 ## 先决条件
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) - *[必需]* 
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) - *[必需]* 
 本解决方案基于此构建，使用前需要先安装它。
 
 - [Docker](https://www.docker.com/products/docker-desktop) - *[可选]* 
